@@ -1,0 +1,22 @@
+@import "./../../../variables.scss";
+
+.topHeader {
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  height: 4rem;
+  border-bottom: #17020d;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  padding: 0 2rem;
+  background: $secondaryColor;
+
+  .logo {
+    color: $goldColor;
+  }
+
+  h3 {
+    color: white;
+    text-transform: uppercase;
+    margin-left: 0.5rem;
+  }
+}

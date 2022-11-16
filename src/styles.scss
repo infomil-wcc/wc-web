@@ -1,1 +1,69 @@
 /* You can add global styles to this file, and also import other style files */
+@import "variables.scss";
+@import "./assets/font/stylesheet.css";
+
+* {
+  box-sizing: border-box;
+}
+
+.material-symbols-outlined {
+  color: white;
+  font-size: 2rem;
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 500,
+  'GRAD' 0,
+  'opsz' 48
+}
+
+html,body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Montserrat', sans-serif;
+  position: relative;
+}
+
+body {
+  background: $primaryColor;
+}
+
+h1 {
+  font-family: 'qatar2022_arabicbold';
+}
+
+h2, h3, h4 {
+  font-family: 'graphik_arabicmedium';
+}
+
+.flex {
+  display: flex;
+}
+
+.align-center {
+  align-items: center;
+}
+
+.align-bottom {
+  align-items: flex-end;
+}
+
+.align-top {
+  align-items: flex-start;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.justify-left {
+  justify-content: flex-start;
+}
+
+.justify-right {
+  justify-content: right;
+}
+
