@@ -2,6 +2,7 @@
 <app-header *ngIf="page == 0"></app-header>
 
 <div class="container">
+  <app-accueil *ngIf="page == 0"></app-accueil>
   <app-resultats-matchs *ngIf="page == 1"></app-resultats-matchs>
   <app-les-jeux *ngIf="page == 2"></app-les-jeux>
   <app-sondages *ngIf="page == 3"></app-sondages>

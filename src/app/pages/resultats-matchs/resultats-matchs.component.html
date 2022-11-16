@@ -1,1 +1,17 @@
-<p>resultats-matchs works!</p>
+<p>Coming soon... stay tuned :)</p>
+
+<ul *ngIf="loaded">
+  <li *ngFor="let item of resultats">
+    {{item.date}}
+    {{item.time}}
+    {{item.group}}
+    {{item.played}}
+    {{item.team_a}}
+    <img class="flags" src="https://infomil-wcc.github.io/faq/flags/{{item.team_a_img}}" alt="" />
+    {{item.score_a}}
+    {{item.team_b}}
+    <img class="flags" src="https://infomil-wcc.github.io/faq/flags/{{item.team_b_img}}" alt="" />
+    {{item.score_b}}
+    {{item.winDraw}}
+  </li>
+</ul>
