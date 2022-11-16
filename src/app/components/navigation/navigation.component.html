@@ -2,12 +2,12 @@
 
 <div class="navmenu" *ngIf="showMenu">
   <ul class="flex align-center justify-center">
-    <li><button (click)="nav(0)">Accueil</button></li>
-    <li><button (click)="nav(1)">Résultats des matchs</button></li>
-    <li><button (click)="nav(2)">Les Jeux Infomil</button></li>
-    <li><button (click)="nav(3)">Sondages</button></li>
-    <li><button (click)="nav(4)">Classements</button></li>
-    <li><button (click)="nav(5)">Régles et Conditions des jeux</button></li>
+    <li><a href="#accueil" (click)="nav(0)">Accueil</a></li>
+    <li><a href="#resultats" (click)="nav(1)">Résultats des matchs</a></li>
+    <li><a href="#les-jeux" (click)="nav(2)">Les Jeux Infomil</a></li>
+    <li><a href="#sondages" (click)="nav(3)">Sondages</a></li>
+    <li><a href="#classements" (click)="nav(4)">Classements</a></li>
+    <li><a href="#regles-conditions" (click)="nav(5)">Régles et Conditions des jeux</a></li>
   </ul>
 
   <button class="close" (click)="showMenu = !showMenu">

@@ -1,5 +1,14 @@
 <app-top-header></app-top-header>
-<app-header></app-header>
+<app-header *ngIf="page == 0"></app-header>
+
+<div class="container">
+  <app-resultats-matchs *ngIf="page == 1"></app-resultats-matchs>
+  <app-les-jeux *ngIf="page == 2"></app-les-jeux>
+  <app-sondages *ngIf="page == 3"></app-sondages>
+  <app-classements *ngIf="page == 4"></app-classements>
+  <app-regles-conditions *ngIf="page == 5"></app-regles-conditions>
+</div>
+
 <router-outlet></router-outlet>
 
 <app-footer></app-footer>

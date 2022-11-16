@@ -16,7 +16,7 @@ export class NavigationComponent implements OnInit {
 
 
   nav(id: number): void {
-    console.log('navigating with id ->', id);
+    this.showMenu = !this.showMenu
   }
 
 }

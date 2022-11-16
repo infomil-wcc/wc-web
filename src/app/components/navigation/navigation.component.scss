@@ -30,25 +30,29 @@ span.menuBtn {
     }
   }
 
-  button {
+  a {
     color: white;
-
-    &:not(.close) {
-      font-size: 4vw;
-    }
+    text-decoration: none;
+    font-size: 4vw;
 
     &:hover {
       color: $goldColor;
+      text-decoration: none;
+    }
+  }
 
+  button.close {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+
+    &:hover {
       .material-symbols-outlined {
         color: $goldColor;
       }
     }
-
-    &.close {
-      position: absolute;
-      top: 2rem;
-      right: 2rem;
-    }
   }
+
+
+
 }
