@@ -36,6 +36,13 @@ h2, h3, h4 {
   font-family: 'graphik_arabicmedium';
 }
 
+button {
+  background: transparent;
+  border: 0;
+  outline: none;
+  cursor: pointer;
+}
+
 .flex {
   display: flex;
 }

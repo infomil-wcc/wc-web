@@ -11,8 +11,44 @@ span.menuBtn {
   position: fixed;
   width: 100%;
   height: 100%;
-  top: 5rem;
+  top: 0;
   left: 0;
-  background: rgba(0,0,0,0.8);
+  background: rgba(0,0,0,0.9);
   padding: 2rem;
+
+
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+
+    li {
+      margin-bottom: 1rem;
+    }
+  }
+
+  button {
+    color: white;
+
+    &:not(.close) {
+      font-size: 4vw;
+    }
+
+    &:hover {
+      color: $goldColor;
+
+      .material-symbols-outlined {
+        color: $goldColor;
+      }
+    }
+
+    &.close {
+      position: absolute;
+      top: 2rem;
+      right: 2rem;
+    }
+  }
 }

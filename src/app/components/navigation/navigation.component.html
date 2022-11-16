@@ -1,7 +1,17 @@
 <span class="material-symbols-outlined menuBtn" (click)="showMenu = !showMenu">menu</span>
 
 <div class="navmenu" *ngIf="showMenu">
-  <ul>
-    <li></li>
+  <ul class="flex align-center justify-center">
+    <li><button (click)="nav(0)">Accueil</button></li>
+    <li><button (click)="nav(2)">Résultats des matchs</button></li>
+    <li><button (click)="nav(2)">Les Jeux Infomil</button></li>
+    <li><button (click)="nav(1)">Classements</button></li>
+    <li><button (click)="nav(3)">Régles et Conditions des jeux</button></li>
   </ul>
+
+  <button class="close" (click)="showMenu = !showMenu">
+    <span class="material-symbols-outlined">
+      close
+      </span>
+  </button>
 </div>
