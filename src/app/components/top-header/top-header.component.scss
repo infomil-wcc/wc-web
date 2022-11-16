@@ -4,19 +4,24 @@
   width: 100vw;
   position: fixed;
   top: 0;
-  height: 4rem;
+  height: 5rem;
   border-bottom: #17020d;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-  padding: 0 2rem;
-  background: $secondaryColor;
+  padding: 0 1rem;
+  background: $primaryColor;
 
   .logo {
     color: $goldColor;
   }
 
   h3 {
-    color: white;
-    text-transform: uppercase;
-    margin-left: 0.5rem;
+    font-size: 4.5vw;
+    margin-left: 1rem;
+    color: $goldColor;
+    font-family: 'graphik_arabicmedium';
+
+    @media screen and (min-width: 768px) {
+      font-size: 1.3rem;
+    }
   }
 }

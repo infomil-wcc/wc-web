@@ -1,1 +1,7 @@
-<span class="material-symbols-outlined">menu</span>
+<span class="material-symbols-outlined menuBtn" (click)="showMenu = !showMenu">menu</span>
+
+<div class="navmenu" *ngIf="showMenu">
+  <ul>
+    <li></li>
+  </ul>
+</div>

@@ -9,7 +9,11 @@ export class NavigationComponent implements OnInit {
 
   constructor() { }
 
+  public showMenu: boolean = false;
+
   ngOnInit(): void {
   }
+
+
 
 }
