@@ -1,0 +1,100 @@
+<div class="matchVote">
+  <div class="matchVote__header flex justify-between">
+    <h4>Groupe <span>{{ group }}</span></h4>
+    <h4>Date: <span> {{ date }}</span></h4>
+    <h4>Time: <span> {{ time }}</span></h4>
+  </div>
+
+  <div class="matchVote__display flex justify-between align-center">
+    <div class="team teamA">
+      <div class="flag">
+        <img src="{{ teamAFlag }}" alt="" />
+      </div>
+      <h5>{{ teamA }}</h5>
+    </div>
+    <div class="teamVs">V/S</div>
+    <div class="team teamB">
+      <div class="flag">
+        <img src="{{ teamBFlag }}" alt="" />
+      </div>
+      <h5>{{ teamB }}</h5>
+    </div>
+  </div>
+
+  <div class="playerDetails flex justify-between">
+
+    <div class="playerDetails__left">
+      <div class="input">
+        <input type="text" value="{{ trigramme }}" />
+        <label>Votre trigramme</label>
+      </div>
+    </div>
+    <div class="playerDetails__right">
+      <div class="input">
+        <input type="text" value="{{ pass }}" />
+        <label>Mot de passe</label>
+      </div>
+    </div>
+  </div>
+
+  <div class="matchVote__winDraw flex justify-between wrap">
+    <div class="sectionTitle">
+      Qui va remporter cette rencontre ?
+    </div>
+
+    <div class="winSelect">
+      <label>
+      <input type="radio" name="winDraw" value="A" />
+      <span class="radio">
+        {{ teamA }}
+      </span>
+      <span class="selected material-symbols-outlined">
+        check_circle
+        </span>
+    </label>
+    </div>
+
+    <div class="winSelect">
+      <label>
+        <input type="radio" name="winDraw" value="D" />
+        <span class="radio">Match nul</span>
+        <span class="selected material-symbols-outlined">
+          check_circle
+          </span>
+      </label>
+    </div>
+
+    <div class="winSelect">
+      <label>
+        <input type="radio" name="winDraw" value="B" />
+        <span class="radio">
+          {{ teamB }}
+        </span>
+        <span class="selected material-symbols-outlined">
+          check_circle
+          </span>
+      </label>
+    </div>
+
+  </div>
+
+  <div class="matchVote__winDraw flex justify-between wrap">
+    <div class="sectionTitle">
+      Qui va inscrire le premier but pour cette rencontre ?
+    </div>
+
+    <div class="toggle__container flex align-center justify-center">
+      <p>{{ teamA }}</p>
+      <div class="action">
+        <input type="checkbox" name="toggle" id="toggle"/>
+        <label for="toggle"></label>
+      </div>
+      <p>{{ teamB }}</p>
+    </div>
+
+
+  </div>
+
+  <div class=""></div>
+  <div class=""></div>
+</div>
