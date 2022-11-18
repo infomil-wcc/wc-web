@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationStart, Router } from '@angular/router';
+import { LoginService } from './services/login.service';
+import { MatchResultsService } from './services/match-results.service';
+
 
 @Component({
   selector: 'app-root',
@@ -9,19 +12,40 @@ import { ActivatedRoute, NavigationStart, Router } from '@angular/router';
 export class AppComponent implements OnInit{
   public title = 'infomil-worldcup';
   public page = 0;
+  public dataLoaded: boolean = false;
 
-  constructor(private route: ActivatedRoute, private router: Router){
+  public dataLogin: Object =[];
+  public matchesData: Object =[];
+
+
+  constructor(private route: ActivatedRoute, private router: Router, private loginService: LoginService, private matchesService: MatchResultsService){
     router.events.forEach((event) => {
       if(event instanceof NavigationStart) {
         this.internalRoute(event.url.split('/#')[1])
       }
     });
+
+    if(!this.dataLoaded) {
+      console.log('Data not loaded...');
+      this.getData();
+    }
   }
 
-  ngOnInit():void {
-
+  getData():void {
+    this.loginService.retrieveLogins().subscribe((data)=>{
+      this.dataLogin = data;
+      console.log('D loaded...');
+      this.getMatchesData();
+    });
   }
 
+  getMatchesData():void {
+    this.matchesService.getMatches().subscribe((data)=>{
+      this.matchesData = data;
+      console.log('M loaded...');
+      this.dataLoaded = true;
+    })
+  }
 
   internalRoute(route: string):void {
     switch (route) {
@@ -51,5 +75,9 @@ export class AppComponent implements OnInit{
         this.page = 0;
         break;
     }
+  }
+
+  ngOnInit():void {
+
   }
 }

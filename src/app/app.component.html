@@ -1,10 +1,11 @@
+<app-preloader *ngIf="!dataLoaded"></app-preloader>
 <app-top-header></app-top-header>
 <app-header *ngIf="page == 0"></app-header>
 
-<div class="container">
+<div class="container" *ngIf="dataLoaded">
   <app-accueil *ngIf="page == 0"></app-accueil>
   <app-resultats-matchs *ngIf="page == 1"></app-resultats-matchs>
-  <app-les-jeux *ngIf="page == 2"></app-les-jeux>
+  <app-les-jeux *ngIf="page == 2" [dataLogin]="dataLogin"></app-les-jeux>
   <app-sondages *ngIf="page == 3"></app-sondages>
   <app-classements *ngIf="page == 4"></app-classements>
   <app-regles-conditions *ngIf="page == 5"></app-regles-conditions>

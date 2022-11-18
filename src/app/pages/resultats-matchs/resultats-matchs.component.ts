@@ -15,35 +15,35 @@ export class ResultatsMatchsComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.matchService.getResults().subscribe(data=>{
-      let myData = data as any;
-      let dataLength = myData.data.length;
-      let count = 0;
+    // this.matchService.getMatches().subscribe(data=>{
+    //   let myData = data as any;
+    //   let dataLength = myData.data.length;
+    //   let count = 0;
 
-      myData.data.forEach((elem: any) => {
-          count = count + 1;
-          let res = {
-            "date": elem.date,
-            "time": elem.time,
-            "group": elem.group,
-            "played": elem.played,
-            "team_a": elem.team_a,
-            "team_a_img": this.getImg(elem.team_a),
-            "team_b": elem.team_b,
-            "team_b_img": this.getImg(elem.team_b),
-            "score_a": elem.score_a,
-            "score_b": elem.score_b,
-            "winDraw": elem.winner_draw,
-          }
+    //   myData.data.forEach((elem: any) => {
+    //       count = count + 1;
+    //       let res = {
+    //         "date": elem.date,
+    //         "time": elem.time,
+    //         "group": elem.group,
+    //         "played": elem.played,
+    //         "team_a": elem.team_a,
+    //         "team_a_img": this.getImg(elem.team_a),
+    //         "team_b": elem.team_b,
+    //         "team_b_img": this.getImg(elem.team_b),
+    //         "score_a": elem.score_a,
+    //         "score_b": elem.score_b,
+    //         "winDraw": elem.winner_draw,
+    //       }
 
-          this.resultats.push(res);
+    //       this.resultats.push(res);
 
-          if(count == dataLength){
-            this.loaded = true,
-            console.log(this.resultats)
-          }
-      })
-    });
+    //       if(count == dataLength){
+    //         this.loaded = true,
+    //         console.log(this.resultats)
+    //       }
+    //   })
+    // });
   }
 
   getImg(str: string): string{

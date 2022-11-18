@@ -21,6 +21,8 @@ html,body {
   padding: 0;
   font-family: 'Montserrat', sans-serif;
   position: relative;
+  width: 100%;
+  height: 100%;
 }
 
 body {
@@ -41,6 +43,16 @@ button {
   border: 0;
   outline: none;
   cursor: pointer;
+  height: fit-content;
+
+  &.link {
+    color: $aqua;
+    font-weight: bold;
+
+    &:hover {
+      color: lighten($aqua,30%);
+    }
+  }
 }
 
 .flex {
@@ -84,9 +96,14 @@ button {
   flex-wrap: wrap;
 }
 
+.aqua {
+  color: $aqua;
+}
+
 div.input {
   width: 100%;
   position: relative;
+  z-index: 2;
   padding-top: 1rem;
 
   label {
@@ -105,9 +122,9 @@ div.input {
     background: transparent;
     width: 100%;
     height: 100%;
-    background: transparent;
+    background: rgba(255,255,255,0.025);
     border-radius: 5px;
-    padding: 10px;
+    padding: 15px 10px;
     border: 1px solid rgba(8, 196, 182,0.5);
     color: white;
 
@@ -118,4 +135,38 @@ div.input {
       background: rgba(255,255,255,0.1);
     }
   }
+
+  .togglePass {
+    position: absolute;
+    right: 15px;
+    top: 28px;
+    font-size: 1.5rem;
+    cursor: pointer;
+
+    &:hover {
+      color: lighten($aqua,20%);
+    }
+  }
+
+  .error {
+    margin: 0.5rem 0 0;
+    color: lighten(red,20%);
+    font-size: 12px;
+    display: flex;
+  }
+}
+
+.btn {
+  background: darken($aqua,10%);
+  color: darken($aqua, 30%);
+  width: fit-content;
+  padding: 0.6rem 1.5rem;
+  border-radius: 5px;
+  font-weight: bold;
+
+  &:hover {
+    background: $aqua;
+    color: darken($aqua, 30%)
+  }
+
 }

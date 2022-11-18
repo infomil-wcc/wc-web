@@ -1,1 +1,5 @@
-<app-match-vote [voteType]="'pool'" [matchId]="1"></app-match-vote>
+<!-- <app-match-vote [voteType]="'pool'" [matchId]="1"></app-match-vote> -->
+<div class="gameContainer flex align-center justify-center">
+  <app-login [(success)]="isLoggedIn" *ngIf="!isLoggedIn" [dataLogin]="dataLogin"></app-login>
+</div>
+

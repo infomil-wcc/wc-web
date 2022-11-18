@@ -1,0 +1,30 @@
+<div class="login flex">
+  <div class="input">
+    <input type="text" #trigramme value="" />
+    <label>VOTRE TRIGRAMME</label>
+    <span *ngIf="!loginOK" class="error">Identifiant non trouvée</span>
+  </div>
+
+
+  <div class="input">
+    <input type="{{passType}}" #pass value="" />
+    <label>MOT DE PASSE</label>
+    <span class="material-symbols-outlined aqua togglePass" (click)="toggleType()">visibility</span>
+    <span *ngIf="!passOK" class="error">Mot de passe incorrecte</span>
+  </div>
+
+
+  <div class="login__bottom flex justify-between align-center">
+    <button class="btnCreate link">Je n'ai pas de compte</button>
+
+    <button class="btn btnLogin" (click)="loginTrial(trigramme.value, pass.value)">M'identifier</button>
+  </div>
+
+
+  <button class="close">
+    <span class="material-symbols-outlined">
+      close
+      </span>
+  </button>
+</div>
+

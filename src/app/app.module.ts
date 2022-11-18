@@ -17,6 +17,8 @@ import { ReglesConditionsComponent } from './pages/regles-conditions/regles-cond
 import { AccueilComponent } from './pages/accueil/accueil.component';
 import { PoolVoteComponent } from './components/pool-vote/pool-vote.component';
 import { MatchVoteComponent } from './components/match-vote/match-vote.component';
+import { LoginComponent } from './components/login/login.component';
+import { PreloaderComponent } from './components/preloader/preloader.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,9 @@ import { MatchVoteComponent } from './components/match-vote/match-vote.component
     ReglesConditionsComponent,
     AccueilComponent,
     PoolVoteComponent,
-    MatchVoteComponent
+    MatchVoteComponent,
+    LoginComponent,
+    PreloaderComponent
   ],
   imports: [
     BrowserModule,

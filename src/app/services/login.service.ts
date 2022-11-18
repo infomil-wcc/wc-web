@@ -6,11 +6,11 @@ import { catchError, retry } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
-export class MatchResultsService {
+export class LoginService {
 
   constructor(private http: HttpClient) { }
 
-  getMatches(){
-    return this.http.get('https://script.google.com/macros/s/AKfycbxax3EXb2tx6sVXiIjKd4u-FrtS5ARAzq8AUiy4_rbziDl71P2uFy0zkD2iiB3VMDPPHw/exec');
+  retrieveLogins(){
+    return this.http.get('https://script.google.com/macros/s/AKfycbwiKXYiOVAZsNnJF8W6T5RYhmsxpl5SXI5ktOafV4jft4-FvMB2X5BUNtij8uTlZG7X/exec');
   }
 }
