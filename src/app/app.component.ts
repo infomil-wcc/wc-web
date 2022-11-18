@@ -50,28 +50,22 @@ export class AppComponent implements OnInit{
   internalRoute(route: string):void {
     switch (route) {
       case 'resultats':
-        console.log('nav route -> resultats')
         this.page = 1;
         break;
       case 'les-jeux':
-        console.log('nav route -> les-jeux');
         this.page = 2;
         break;
-      case 'sondages':
-        console.log('nav route -> sondages');
+      case 'news':
         this.page = 3;
         break;
       case 'classements':
-        console.log('nav route -> classements');
         this.page = 4;
         break;
       case 'regles-conditions':
-        console.log('nav route -> regles-conditions');
         this.page = 5;
         break;
 
       default:
-        console.log('nav route -> accueil');
         this.page = 0;
         break;
     }

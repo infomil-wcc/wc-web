@@ -1,5 +1,5 @@
 import { getNumberOfCurrencyDigits } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { MatchResultsService } from 'src/app/services/match-results.service';
 @Component({
   selector: 'app-resultats-matchs',
@@ -12,42 +12,51 @@ export class ResultatsMatchsComponent implements OnInit {
 
   public resultats: any = [];
   public loaded:boolean = false;
+  public uniqueDates: any = [];
+
+  @Input() matchesData: any;
 
   ngOnInit(): void {
+      let dataLength = this.matchesData.data.length;
+      let count = 0;
+      this.uniqueDates = this.getUniqueDates(this.matchesData.data);
 
-    // this.matchService.getMatches().subscribe(data=>{
-    //   let myData = data as any;
-    //   let dataLength = myData.data.length;
-    //   let count = 0;
+      this.matchesData.data.forEach((elem: any) => {
+          count = count + 1;
+          let res = {
+            "date": elem.date,
+            "time": elem.time,
+            "group": elem.group,
+            "played": elem.played,
+            "team_a": elem.team_a,
+            "team_a_img": this.getImg(elem.team_a),
+            "team_b": elem.team_b,
+            "team_b_img": this.getImg(elem.team_b),
+            "score_a": elem.score_a,
+            "score_b": elem.score_b,
+            "winDraw": elem.winner_draw,
+          }
 
-    //   myData.data.forEach((elem: any) => {
-    //       count = count + 1;
-    //       let res = {
-    //         "date": elem.date,
-    //         "time": elem.time,
-    //         "group": elem.group,
-    //         "played": elem.played,
-    //         "team_a": elem.team_a,
-    //         "team_a_img": this.getImg(elem.team_a),
-    //         "team_b": elem.team_b,
-    //         "team_b_img": this.getImg(elem.team_b),
-    //         "score_a": elem.score_a,
-    //         "score_b": elem.score_b,
-    //         "winDraw": elem.winner_draw,
-    //       }
+          this.resultats.push(res);
 
-    //       this.resultats.push(res);
-
-    //       if(count == dataLength){
-    //         this.loaded = true,
-    //         console.log(this.resultats)
-    //       }
-    //   })
-    // });
+          if(count == dataLength){
+            this.loaded = true;
+          }
+      })
   }
 
   getImg(str: string): string{
     return str.replace(/[ ,]+/g, "-").toLowerCase() + '.png';
+  }
+
+  getUniqueDates(data: any){
+    let dateKeys: any = [];
+
+    data.forEach((element: { date: any; }) => {
+      dateKeys.push(element.date);
+    });
+
+    return dateKeys.filter((v: any, i: any, a: string | any[]) => a.indexOf(v) === i);
   }
 
 }

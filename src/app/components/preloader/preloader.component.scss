@@ -61,13 +61,12 @@ main-loader {
   }
 
   p {
-    margin-top: 18rem;
+    padding-left: 0.8rem;
+    margin-top: 20rem;
     color: white;
-    font-weight: bold;
-    span {
       font-size: 12px;
       font-weight: normal;
-    }
+      text-transform: uppercase;
   }
 }
 

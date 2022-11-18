@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { CookieserviceService } from 'src/app/services/cookieservice.service';
 
 @Component({
   selector: 'app-login',
@@ -7,13 +8,18 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  constructor(private cookie: CookieserviceService) { }
+
   public passType: string = 'password';
   public loginOK: boolean = true;
   public passOK: boolean = true;
+  public emptyFields: boolean = false;
 
+  @Input() showLogin!: boolean;
   @Input() success!: boolean;
   @Output() successChange = new EventEmitter<boolean>();
+  @Output() showLoginChange = new EventEmitter<boolean>();
+
 
   @Input() dataLogin!: any;
   @Input() matchesData!: any;
@@ -27,39 +33,41 @@ export class LoginComponent implements OnInit {
   }
 
   loginTrial(login: string, pass: string){
-    if(this.checkLoginInfos(login,pass)) {
-      this.successChange.emit(true);
+    if(pass !=='' && login !=='') {
+      this.checkLogin(login,pass);
+      this.emptyFields = false;
+    } else if(pass =='' || login ==''){
+      this.emptyFields = true;
+      this.loginOK = true;
+      this.passOK = true;
     }
   }
 
-  checkLoginInfos(login: string, pass: string): boolean {
-    let success = false;
 
-    // this.dataLogin.data.forEach((element: { username: string; password: string;}) => {
-    //   if(element.username == login && element.password == pass) {
-    //     console.log('using username and found', element);
-    //     this.loginOK = true;
-    //     this.passOK = true;
-    //     break
-    //   } else {
-    //     console.log('login or password incorrect')
-    //   }
-    // });
-
-    this.dataLogin.data.every((element: { username: string; password: string;}) =>{
+  checkLogin(login: string, pass: string){
+    this.dataLogin.data.every((element: { username: string;}) =>{
       if(element.username == login) {
-        console.log('using username and found', element);
         this.loginOK = true;
+        this.passOK = true;
+        this.checkPass(pass, element);
         return false;
       } else {
-        console.log('login incorrect');
         this.loginOK = false;
+        this.cookie.delCookies();
         return true;
-      } 
+      }
     })
+  }
 
-    console.log('finished checking');
-    return success;
+  checkPass(pass: string, element: any){
+    if(element.password == pass){
+      this.passOK = true;
+      this.successChange.emit(true);
+      this.cookie.setCookie('user', element.username);
+    } else {
+      this.passOK = false;
+      this.cookie.delCookies();
+    }
   }
 
 }

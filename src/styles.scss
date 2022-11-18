@@ -26,7 +26,7 @@ html,body {
 }
 
 body {
-  background: $primaryColor;
+  background: white;
   padding-top: 5rem;
 }
 
@@ -112,7 +112,7 @@ div.input {
     color: white;
     background: rgba(8, 196, 182,0.5);
     padding: 5px;
-    top: -6px;
+    top: -5px;
     left: 10px;
     border-radius: 5px 5px 0 0;
   }
@@ -169,4 +169,8 @@ div.input {
     color: darken($aqua, 30%)
   }
 
+}
+
+.primaryBackground {
+  background: $primaryColor;
 }
