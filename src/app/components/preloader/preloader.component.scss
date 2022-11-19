@@ -1,3 +1,5 @@
+@import "../../../variables.scss";
+
 main-loader {
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.75);
@@ -30,7 +32,7 @@ main-loader {
         animation-duration: 1s;
         animation-name: pulse;
         animation-iteration-count: infinite;
-        color: #08c4b6;
+        color: $aqua;
 
         &.path-7 {
           animation-delay: -1s

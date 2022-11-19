@@ -10,7 +10,7 @@ export class ResultatsMatchsComponent implements OnInit {
 
   constructor(private matchService : MatchResultsService) { }
 
-  public resultats: any = [];
+  public match: any = [];
   public loaded:boolean = false;
   public uniqueDates: any = [];
 
@@ -37,7 +37,7 @@ export class ResultatsMatchsComponent implements OnInit {
             "winDraw": elem.winner_draw,
           }
 
-          this.resultats.push(res);
+          this.match.push(res);
 
           if(count == dataLength){
             this.loaded = true;

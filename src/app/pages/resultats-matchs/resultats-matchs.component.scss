@@ -1,0 +1,32 @@
+@import "../../../variables.scss";
+
+.matches {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+
+  .days {
+    margin-bottom: 4rem;
+
+    &:nth-child(odd){
+
+      .matches__game {
+        background: linear-gradient(90deg, darken(white, 10%) 30%, lighten($goldColor,30%) 100%);
+        color: darken($secondaryColor, 50%);
+      }
+    }
+  }
+
+  &__game {
+    display: flex;
+    align-items: center;
+    padding: 0.75rem;
+    background: $aqua;
+    background: linear-gradient(90deg, darken(white, 10%) 30%, $mint 100%);
+    color: darken($mint, 70%);
+    margin-bottom: 0.75rem;
+    font-weight: bold;
+    font-size: 14px;
+    border-radius: 8px;
+  }
+}

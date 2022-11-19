@@ -1,28 +1,12 @@
 <p>Coming soon... stay tuned :)</p>
 
-<!-- <ul *ngIf="loaded">
-  <li *ngFor="let item of resultats">
-    {{item.date}}
-    {{item.time}}
-    {{item.group}}
-    {{item.played}}
-    {{item.team_a}}
-    <img class="flags" src="https://infomil-wcc.github.io/faq/flags/{{item.team_a_img}}" alt="" />
-    {{item.score_a}}
-    {{item.team_b}}
-    <img class="flags" src="https://infomil-wcc.github.io/faq/flags/{{item.team_b_img}}" alt="" />
-    {{item.score_b}}
-    {{item.winDraw}}
-  </li>
-</ul> -->
-
-<ul *ngIf="loaded">
-  <li *ngFor="let date of uniqueDates">
+<ul *ngIf="loaded" class="matches">
+  <li *ngFor="let date of uniqueDates" class="days">
     {{ date }}
     <br />
 
-    <div *ngFor="let item of resultats">
-      <div *ngIf="item.date == date ">
+    <ng-container *ngFor="let item of match">
+      <div *ngIf="item.date == date " class="matches__game">
         <!-- {{item.date}} -->
         {{item.time}}
         {{item.group}}
@@ -35,7 +19,7 @@
         {{item.score_b}}
         {{item.winDraw}}
       </div>
-    </div>
+    </ng-container>
 
   </li>
 </ul>
