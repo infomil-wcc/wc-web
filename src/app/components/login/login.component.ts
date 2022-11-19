@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
   @Input() matchesData!: any;
 
   ngOnInit(): void {
-    console.log(this.dataLogin.data);
+    // console.log(this.dataLogin.data);
   }
 
   toggleType(){
@@ -68,6 +68,10 @@ export class LoginComponent implements OnInit {
       this.passOK = false;
       this.cookie.delCookies();
     }
+  }
+
+  hideLogin(){
+    this.showLoginChange.emit(false);
   }
 
 }

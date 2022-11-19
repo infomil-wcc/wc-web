@@ -1,25 +1,57 @@
-<p>Coming soon... stay tuned :)</p>
-
 <ul *ngIf="loaded" class="matches">
   <li *ngFor="let date of uniqueDates" class="days">
-    {{ date }}
+    <div class="days__header flex align-center"><span class="material-symbols-outlined">
+      event
+      </span> {{ date | date: 'fullDate' }}</div>
     <br />
 
     <ng-container *ngFor="let item of match">
       <div *ngIf="item.date == date " class="matches__game">
         <!-- {{item.date}} -->
-        {{item.time}}
-        {{item.group}}
-        {{item.played}}
-        {{item.team_a}}
-        <img class="flags" src="https://infomil-wcc.github.io/faq/flags/{{item.team_a_img}}" alt="" />
-        {{item.score_a}}
-        {{item.team_b}}
-        <img class="flags" src="https://infomil-wcc.github.io/faq/flags/{{item.team_b_img}}" alt="" />
-        {{item.score_b}}
-        {{item.winDraw}}
+        <div class="time flex align-center">
+          <span class="material-symbols-outlined icone">timer</span>
+          {{item.time}} (MU time)
+        </div>
+        <div class="group {{item.group}}">
+          <ng-container *ngIf="item.group !== 'ST'">
+            {{item.group}}
+          </ng-container>
+        </div>
+        <!-- {{item.played}} -->
+        <div class="teamA flex align-center">
+          <img class="flags" src="https://infomil-wcc.github.io/faq/flags/{{item.team_a_img}}" alt="" />
+          <div class="teamName">{{item.team_a}}</div>
+          <div class="score">{{item.score_a}}</div>
+        </div>
+
+        <div class="vs">-</div>
+
+        <div class="teamB flex align-center">
+          <div class="score">{{item.score_b}}</div>
+          <div class="teamName">{{item.team_b}}</div>
+          <img class="flags" src="https://infomil-wcc.github.io/faq/flags/{{item.team_b_img}}" alt="" />
+        </div>
+
+        <!-- {{item.winDraw}} -->
+
+        <div class="vote">
+          <button class="btnVote" [ngClass]="{'disabled' : item.activeToVote == 0}" *ngIf="!item.hasPlayed" (click)="playGame()">
+            <ng-container>Pronostiquer</ng-container>
+          </button>
+
+          <div class="result flex align-center" *ngIf="item.hasPlayed">
+            <ng-container *ngIf="item.score_a == item.score_b">
+              <span class="draw">D</span> Match Nul</ng-container>
+            <ng-container *ngIf="item.score_a > item.score_b">
+              <span class="win">W</span> {{ item.team_a}}</ng-container>
+            <ng-container *ngIf="item.score_a < item.score_b">
+              <span class="win">W</span> {{ item.team_b}}</ng-container>
+            </div>
+        </div>
       </div>
     </ng-container>
 
   </li>
 </ul>
+
+<app-login [(success)]="showLogin" [(showLogin)]="showLogin" *ngIf="showLogin && !isLoggedIn" [dataLogin]="dataLogin"></app-login>

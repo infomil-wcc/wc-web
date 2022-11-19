@@ -3,7 +3,8 @@
 .matches {
   list-style-type: none;
   padding: 0;
-  margin: 0;
+  margin: 2rem auto 0;
+  max-width: 860px;
 
   .days {
     margin-bottom: 4rem;
@@ -14,6 +15,10 @@
         background: linear-gradient(90deg, darken(white, 10%) 30%, lighten($goldColor,30%) 100%);
         color: darken($secondaryColor, 50%);
       }
+    }
+
+    &__header {
+      font-size: 1.5rem;
     }
   }
 
@@ -28,5 +33,11 @@
     font-weight: bold;
     font-size: 14px;
     border-radius: 8px;
+    box-shadow: 0 0 10px rgba(darken($primaryColor,10%),0.8);
+
+    .icone {
+      font-size: 1.25rem;
+      color: $primaryColor;
+    }
   }
 }
