@@ -1,5 +1,18 @@
 @import "./../../../variables.scss";
 
+:host {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,0.9);
+  top: 0;
+  left: 0;
+  z-index: 100;
+}
+
 .matchVote {
   background: #222;
   width: 100%;
@@ -8,14 +21,24 @@
   border-radius: 1.5rem;
   color: white;
   margin: 0 auto;
-  overflow: hidden;
+  position: relative;
+
+  .btnClose {
+    position: absolute;
+    top: -2rem;
+    right: -2rem;
+
+    .icone {
+      color: $mint;
+    }
+  }
 
   .sectionTitle {
     width: 100%;
     font-size: 1.2rem;
     flex-shrink: 0;
     font-weight: bold;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
     text-align: center;
   }
 
@@ -33,6 +56,7 @@
         font-size: 1.2rem;
         margin-left: 0.5rem;
       }
+
     }
   }
 
@@ -54,26 +78,45 @@
     }
   }
 
-  .playerDetails {
-    background: rgba(8, 196, 182,0.2);
-    padding: 2rem;
-    margin-top: 2rem;
-
-
-    & > div {
-      width: 45%;
-    }
-  }
-
-  &__winDraw {
+  &__section {
     padding: 1rem 2rem;
+
+    &.winDraw {
+      padding-bottom: 2.25rem;
+    }
   }
 
   .winSelect {
     border: 1px solid rgba(8, 196, 182,0.1);
     border-radius: 15px;
     position: relative;
-    overflow: hidden;
+    // overflow: hidden;
+
+    span.radio {
+      flex-direction: column;
+      font-size: 12px;
+      overflow: hidden;
+      border: 2px solid transparent;
+      border-radius: 15px;
+
+      img {
+        height: 208%;
+        width: auto;
+      }
+
+      .icone {
+        margin: 0;
+      }
+    }
+
+    span.teamName {
+      position: absolute;
+      bottom: -1.5rem;
+      left: 0;
+      width: 100%;
+      text-align: center;
+      font-size: 12px;
+    }
 
     label {
       width: 8rem;
@@ -93,12 +136,15 @@
     }
 
     .selected {
-      color: #08c4b6;
+      color: white;
       position: absolute;
       top: 10px;
-      right: 10px;
-      font-size: 1.2rem;
+      right: 2px;
+      font-size: 0.8rem;
       opacity: 0;
+      background: #01871c;
+      border-radius: 100%;
+      padding: 5px;
     }
 
     input:checked {
@@ -133,6 +179,11 @@
     padding: 1rem 2rem;
     border-radius: 10px;
     border: 1px solid rgba(8, 196, 182,0.2);
+
+    p {
+      width: 8rem;
+      text-align: center;
+    }
 
     p:first-of-type {
       color: $goldColor;
@@ -179,4 +230,87 @@
 
   }
 
+  .scores {
+    margin: 0 auto;
+
+    .input {
+      width: fit-content;
+    }
+
+    .sepa {
+      font-size: 2rem;
+      margin: 0 1rem;
+      position: relative;
+      margin-top: -1.5rem;
+
+      .btnReset {
+        position: absolute;
+        background: lighten($aqua, 5%);
+        width: 1.5rem; height: 1.5rem;
+        border-radius: 1.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        left: -5px;
+        top: 30px;
+
+        &:hover {
+          background: lighten($aqua, 20%);
+        }
+
+        .icone {
+          font-size: 1.2rem;
+          font-weight: bold;
+          color: darken($aqua, 20%);
+          margin: 0;
+        }
+      }
+    }
+
+    .teamName {
+      width: 10rem;
+      text-align: center;
+      font-size: 12px;
+    }
+
+    .input input {
+      width: 4rem;
+      text-align: center;
+      font-size: 16px;
+      font-weight: bold;
+    }
+  }
+
+  .input {
+    padding: 0;
+  }
+
+  .input input {
+    border: 1px solid lighten($aqua, 5%);
+
+    &:focus {
+      border: 1px solid lighten($aqua, 15%);
+    }
+  }
+
+  .scorer {
+    width: 80%;
+    margin: 0 auto;
+  }
+
+  .btn {
+    background: $aqua;
+
+    &:hover {
+      color: darken($aqua, 30%);
+      background: lighten($aqua, 10%);
+    }
+  }
+
+  // &.R16,&.SF,&.QF,&.WCF {
+
+  //   .winDraw {
+  //     justify-content: space-evenly;
+  //   }
+  // }
 }

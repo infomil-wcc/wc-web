@@ -72,11 +72,11 @@ button {
   height: fit-content;
 
   &.link {
-    color: $aqua;
+    color: $secondaryColor;
     font-weight: bold;
 
     &:hover {
-      color: lighten($aqua,30%);
+      color: lighten($secondaryColor,30%);
     }
   }
 }
@@ -99,6 +99,10 @@ button {
 
 .justify-between {
   justify-content: space-between;
+}
+
+.justify-evenly {
+  justify-content: space-evenly;
 }
 
 .justify-center {
@@ -136,7 +140,7 @@ div.input {
     position: absolute;
     font-size: 10px;
     color: white;
-    background: rgba(8, 196, 182,0.5);
+    background: $secondaryColor;
     padding: 5px;
     top: -5px;
     left: 10px;
@@ -151,13 +155,13 @@ div.input {
     background: rgba(255,255,255,0.025);
     border-radius: 5px;
     padding: 15px 10px;
-    border: 1px solid rgba(8, 196, 182,0.5);
+    border: 1px solid $secondaryColor;
     color: white;
 
     &:focus {
       outline: none;
       box-shadow: none!important;
-      border: 1px solid rgba(8, 196, 182,1);
+      border: 1px solid ligten($secondaryColor, 5%);
       background: rgba(255,255,255,0.1);
     }
   }
@@ -167,10 +171,11 @@ div.input {
     right: 15px;
     top: 28px;
     font-size: 1.5rem;
+    color: $secondaryColor;
     cursor: pointer;
 
     &:hover {
-      color: lighten($aqua,20%);
+      color: lighten($secondaryColor,20%);
     }
   }
 
@@ -183,16 +188,17 @@ div.input {
 }
 
 .btn {
-  background: darken($aqua,10%);
-  color: darken($aqua, 30%);
+  background: darken($secondaryColor,10%);
+  color: white;
   width: fit-content;
   padding: 0.6rem 1.5rem;
   border-radius: 5px;
   font-weight: bold;
+  text-transform: uppercase;
 
   &:hover {
-    background: $aqua;
-    color: darken($aqua, 30%)
+    background: $secondaryColor;
+    color: darken($secondaryColor, 30%)
   }
 
 }
@@ -203,6 +209,62 @@ div.input {
   background-attachment: fixed;
 }
 
+.group {
+  min-width: 26px;
+  height: 26px;
+  padding: 0 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: $aqua;
+  color: white;
+  border-radius: 5px;
+  margin: 0 1rem;
+
+  &.A {
+    background: $primaryColor;
+  }
+
+  &.B {
+    background: $goldColor;
+  }
+
+  &.C {
+    background: darken($mint,30%);
+  }
+
+  &.D {
+    background: darken($aqua, 10%);
+  }
+
+  &.E {
+    background: darken($goldColor, 10%);
+  }
+
+  &.F {
+    background: lighten($primaryColor, 15%);
+  }
+
+  &.G {
+    background: lighten($goldColor, 10%);
+  }
+
+  &.R16 {
+    background: darken(coral,10%);
+  }
+
+  &.QF {
+    background: darken(#c02b44,10%);
+  }
+
+  &.SF {
+    background: darken(#c00927,10%);
+  }
+
+  &.WCF {
+    background: darken(#bead11,10%);
+  }
+}
 
 .matches__game {
   .time {
@@ -211,63 +273,6 @@ div.input {
 
   .vs {
     margin: 0 1rem;
-  }
-
-  .group {
-    min-width: 26px;
-    height: 26px;
-    padding: 0 5px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: $aqua;
-    color: white;
-    border-radius: 5px;
-    margin: 0 1rem;
-
-    &.A {
-      background: $primaryColor;
-    }
-
-    &.B {
-      background: $goldColor;
-    }
-
-    &.C {
-      background: darken($mint,30%);
-    }
-
-    &.D {
-      background: darken($aqua, 10%);
-    }
-
-    &.E {
-      background: darken($goldColor, 10%);
-    }
-
-    &.F {
-      background: lighten($primaryColor, 15%);
-    }
-
-    &.G {
-      background: lighten($goldColor, 10%);
-    }
-
-    &.R16 {
-      background: darken(coral,10%);
-    }
-
-    &.QF {
-      background: darken(#c02b44,10%);
-    }
-
-    &.SF {
-      background: darken(#c00927,10%);
-    }
-
-    &.WCF {
-      background: darken(#bead11,10%);
-    }
   }
 
   .teamA,
@@ -320,7 +325,7 @@ div.input {
 
     .draw,
     .win {
-      font-size: 8px;
+      font-size: 9px;
       color: white;
       background: #007430;
       padding:5px;
@@ -332,4 +337,10 @@ div.input {
       background: #222;
     }
   }
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }

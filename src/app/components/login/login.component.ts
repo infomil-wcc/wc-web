@@ -16,8 +16,8 @@ export class LoginComponent implements OnInit {
   public emptyFields: boolean = false;
 
   @Input() showLogin!: boolean;
-  @Input() success!: boolean;
-  @Output() successChange = new EventEmitter<boolean>();
+  // @Input() success!: boolean;
+  @Output() successLogin: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output() showLoginChange = new EventEmitter<boolean>();
 
 
@@ -62,12 +62,17 @@ export class LoginComponent implements OnInit {
   checkPass(pass: string, element: any){
     if(element.password == pass){
       this.passOK = true;
-      this.successChange.emit(true);
       this.cookie.setCookie('user', element.username);
+      this.loginSuccess();
     } else {
       this.passOK = false;
       this.cookie.delCookies();
     }
+  }
+
+  loginSuccess(){
+    this.successLogin.emit(true);
+    this.hideLogin();
   }
 
   hideLogin(){

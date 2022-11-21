@@ -12,11 +12,13 @@
           <span class="material-symbols-outlined icone">timer</span>
           {{item.time}} (MU time)
         </div>
+
         <div class="group {{item.group}}">
           <ng-container *ngIf="item.group !== 'ST'">
             {{item.group}}
           </ng-container>
         </div>
+
         <!-- {{item.played}} -->
         <div class="teamA flex align-center">
           <img class="flags" src="https://infomil-wcc.github.io/faq/flags/{{item.team_a_img}}" alt="" />
@@ -35,17 +37,17 @@
         <!-- {{item.winDraw}} -->
 
         <div class="vote">
-          <button class="btnVote" [ngClass]="{'disabled' : item.activeToVote == 0}" *ngIf="!item.hasPlayed" (click)="playGame()">
+          <button class="btnVote" [ngClass]="{'disabled' : item.activeToVote == 0}" *ngIf="!item.hasPlayed" (click)="playGame(item)">
             <ng-container>Pronostiquer</ng-container>
           </button>
 
           <div class="result flex align-center" *ngIf="item.hasPlayed">
             <ng-container *ngIf="item.score_a == item.score_b">
-              <span class="draw">D</span> Match Nul</ng-container>
+              <span class="draw">Draw</span> Match Nul</ng-container>
             <ng-container *ngIf="item.score_a > item.score_b">
-              <span class="win">W</span> {{ item.team_a}}</ng-container>
+              <span class="win">Winner</span> {{ item.team_a}}</ng-container>
             <ng-container *ngIf="item.score_a < item.score_b">
-              <span class="win">W</span> {{ item.team_b}}</ng-container>
+              <span class="win">Winner</span> {{ item.team_b}}</ng-container>
             </div>
         </div>
       </div>
@@ -54,4 +56,7 @@
   </li>
 </ul>
 
-<app-login [(success)]="showLogin" [(showLogin)]="showLogin" *ngIf="showLogin && !isLoggedIn" [dataLogin]="dataLogin"></app-login>
+<app-login (successLogin)="loginSuccess($event)" [(showLogin)]="showLogin" *ngIf="showLogin && !isLoggedIn" [dataLogin]="dataLogin"></app-login>
+
+<app-match-vote *ngIf="showGame" [(showLogin)]="showLogin" [(showGame)]="showGame" [voteType]="'pool'" [matchId]="1" [element]="gameToVote"></app-match-vote>
+

@@ -1,43 +1,22 @@
-<div class="matchVote">
+<div class="matchVote {{this.element.group}}">
+
+  <button class="btnClose"><span class="material-symbols-outlined icone" (click)="closeGame()">close</span></button>
+
   <div class="matchVote__header flex justify-between">
-    <h4>Groupe <span>{{ group }}</span></h4>
-    <h4>Date: <span> {{ date }}</span></h4>
-    <h4>Time: <span> {{ time }}</span></h4>
+    <h4>Groupe
+
+      <div class="group {{ this.element.group }}">
+        <ng-container *ngIf="this.element.group !== 'ST'">
+          {{ this.element.group }}
+        </ng-container>
+      </div>
+    </h4>
+
+    <h4>Date: <span> {{ this.element.date }}</span></h4>
+    <h4>Coup d'envoi: <span> {{ this.element.time }}</span></h4>
   </div>
 
-  <div class="matchVote__display flex justify-between align-center">
-    <div class="team teamA">
-      <div class="flag">
-        <img src="{{ teamAFlag }}" alt="" />
-      </div>
-      <h5>{{ teamA }}</h5>
-    </div>
-    <div class="teamVs">V/S</div>
-    <div class="team teamB">
-      <div class="flag">
-        <img src="{{ teamBFlag }}" alt="" />
-      </div>
-      <h5>{{ teamB }}</h5>
-    </div>
-  </div>
-
-  <div class="playerDetails flex justify-between">
-
-    <div class="playerDetails__left">
-      <div class="input">
-        <input type="text" value="{{ trigramme }}" />
-        <label>Votre trigramme</label>
-      </div>
-    </div>
-    <div class="playerDetails__right">
-      <div class="input">
-        <input type="password" value="{{ pass }}" />
-        <label>Mot de passe</label>
-      </div>
-    </div>
-  </div>
-
-  <div class="matchVote__winDraw flex justify-between wrap">
+  <div class="matchVote__section winDraw flex justify-between wrap">
     <div class="sectionTitle">
       Qui va remporter cette rencontre ?
     </div>
@@ -46,55 +25,135 @@
       <label>
       <input type="radio" name="winDraw" value="A" />
       <span class="radio">
-        {{ teamA }}
+        <img src="{{ teamAFlag }}" alt="" />
       </span>
       <span class="selected material-symbols-outlined">
-        check_circle
+        done
         </span>
+      <span class="teamName">{{ this.element.team_a }}</span>
     </label>
     </div>
 
-    <div class="winSelect">
+    <div class="winSelect" *ngIf="stepSelect">
       <label>
         <input type="radio" name="winDraw" value="D" />
-        <span class="radio">Match nul</span>
+        <span class="radio">
+          <span class="material-symbols-outlined icone">close</span>
+          Match nul
+        </span>
+
         <span class="selected material-symbols-outlined">
-          check_circle
+          done
           </span>
       </label>
+    </div>
+
+    <div class="versus" *ngIf="!stepSelect">
+      <h4>VS</h4>
     </div>
 
     <div class="winSelect">
       <label>
         <input type="radio" name="winDraw" value="B" />
         <span class="radio">
-          {{ teamB }}
+          <img src="{{ teamBFlag}}" alt="" />
+
         </span>
+
         <span class="selected material-symbols-outlined">
-          check_circle
+          done
           </span>
+          <span class="teamName">{{ this.element.team_b }}</span>
       </label>
     </div>
 
   </div>
 
-  <div class="matchVote__winDraw flex justify-between wrap">
+  <div class="matchVote__section halfTime flex justify-between wrap" *ngIf="this.element.group == 'SF' || this.element.group == 'WCF'">
+    <div class="sectionTitle">
+      Quel sera le score à la mi-temps ?
+    </div>
+
+    <div class="scores halfTime flex align-center justify-between">
+      <div class="flex align-center justify-between">
+        <div class="teamName">{{ this.element.team_a }}</div>
+        <div class="teamAscore input">
+          <input type="number" value="" />
+        </div>
+      </div>
+
+      <div class="sepa">-
+      <button class="btnReset" title="Ré-initialiser le score"><span class="material-symbols-outlined icone">
+        restart_alt
+        </span></button>
+      </div>
+      <div class="flex align-center justify-between">
+        <div class="teamBscore input">
+          <input type="number" value="" />
+        </div>
+        <div class="teamName">{{ this.element.team_b }}</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="matchVote__section fullTime flex justify-between wrap" *ngIf="this.element.group == 'R16' || this.element.group == 'QF' || this.element.group == 'SF' || this.element.group == 'WCF'">
+    <div class="sectionTitle">
+      Quel sera le score au coup de sifflet final ?
+    </div>
+
+    <div class="scores halfTime flex align-center justify-between">
+      <div class="flex align-center justify-between">
+        <div class="teamName">{{ this.element.team_a }}</div>
+        <div class="teamAscore input aqua">
+          <input type="number" value="" />
+        </div>
+      </div>
+
+      <div class="sepa">-
+        <button class="btnReset" title="Ré-initialiser le score"><span class="material-symbols-outlined icone">
+          restart_alt
+          </span></button>
+        </div>
+      <div class="flex align-center justify-between">
+        <div class="teamBscore input aqua">
+          <input type="number" value="" />
+        </div>
+        <div class="teamName">{{ this.element.team_b }}</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="matchVote__section firstGoal flex justify-between wrap" *ngIf="this.element.group == 'SF' || this.element.group == 'WCF'">
     <div class="sectionTitle">
       Qui va inscrire le premier but pour cette rencontre ?
     </div>
 
     <div class="toggle__container flex align-center justify-center">
-      <p>{{ teamA }}</p>
+      <p>{{ this.element.team_a }}</p>
       <div class="action">
         <input type="checkbox" name="toggle" id="toggle"/>
         <label for="toggle"></label>
       </div>
-      <p>{{ teamB }}</p>
+      <p>{{ this.element.team_b }}</p>
     </div>
 
 
   </div>
 
-  <div class=""></div>
-  <div class=""></div>
+  <div class="matchVote__section scorer flex justify-between wrap" *ngIf="this.element.group == 'WCF'">
+    <div class="sectionTitle">
+      Le nom d'un buteur pour cette rencontre ?
+    </div>
+
+    <div class="scorer">
+      <div class="input scorer">
+        <input type="text" />
+      </div>
+    </div>
+  </div>
+
+  <div class="matchVote__section validate flex justify-evenly wrap">
+    <button class="btn">Annuler</button>
+    <button class="btn">Valider</button>
+  </div>
 </div>

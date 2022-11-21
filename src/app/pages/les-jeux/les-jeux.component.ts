@@ -15,6 +15,7 @@ export class LesJeuxComponent implements OnInit {
   showLogin: boolean = false;
   isLoggedIn: boolean = false;
 
+
   ngOnInit(): void {
     this.cookieExists();
   }

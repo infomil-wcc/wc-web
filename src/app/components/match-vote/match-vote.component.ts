@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-match-vote',
@@ -11,34 +11,42 @@ export class MatchVoteComponent implements OnInit {
 
   @Input() voteType: string = '';
   @Input() matchId: number = 0;
+  @Input() element!: any;
+  @Input() showGame: boolean = false;
+  @Input() showLogin: boolean = false;
 
-  date: string = '00/00/00';
-  time: string = '00h00';
-  teamA: string = 'Team A';
-  teamB: string = 'Team B';
-  group: string = 'Z';
-  teamAFlag: string = 'https://infomil-wcc.github.io/faq/flags/argentine.png';
-  teamBFlag: string = 'https://infomil-wcc.github.io/faq/flags/argentine.png';
-  trigramme: string = '';
-  trigrammeId: string = '';
-  pass: string = '';
-  passId: string = '';
-  winDraw: string = 'D';
-  winDrawId: string = '';
-  scoresFirst: string = 'A';
-  scoresFirstId: string = '';
-  halftimeA: number = 0;
-  halfTimeAId: string = '';
-  halftimeB: number = 0;
-  halfTimeBId: string = '';
-  fulltimeA: number = 0;
-  fulltimeAId: string = '';
-  fulltimeB: number = 0;
-  fulltimeBId: string = '';
-  scorer: string = 'Bobby Charlton';
-  scorerId: string = '';
+  @Output() showGameChange =  new EventEmitter<boolean>();
+  @Output() showLoginChange = new EventEmitter<boolean>();
+
+  teamAFlag!: string;
+  teamBFlag!: string;
+  @Input() trigramme!: string;
+  stepSelect: boolean = false;
+
 
   ngOnInit(): void {
+    this.showLoginChange.emit(false);
+    this.stepSelect = this.showSelect(this.element.group);
+    this.teamAFlag = `https://infomil-wcc.github.io/faq/flags/${this.getImg(this.element.team_a)}`;
+    this.teamBFlag = `https://infomil-wcc.github.io/faq/flags/${this.getImg(this.element.team_b)}`;
   }
 
+  closeGame(){
+    this.showGameChange.emit(false);
+    console.log('close game');
+  }
+
+  getImg(str: string): string{
+    return str.replace(/[ ,]+/g, "-").toLowerCase() + '.png';
+  }
+
+  showSelect(elem: string){
+    console.log('showSelect ->', elem);
+    if(elem == 'SF' || elem == 'QF' || elem == 'R16' || elem == 'WCF') {
+      return false
+    } else {
+      return true
+    }
+
+  }
 }

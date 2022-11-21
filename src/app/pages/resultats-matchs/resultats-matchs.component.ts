@@ -1,5 +1,5 @@
 import { getNumberOfCurrencyDigits } from '@angular/common';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit } from '@angular/core';
 import { elementAt } from 'rxjs';
 import { MatchResultsService } from 'src/app/services/match-results.service';
 import { CookieserviceService } from 'src/app/services/cookieservice.service';
@@ -19,6 +19,10 @@ export class ResultatsMatchsComponent implements OnInit {
 
   showLogin: boolean = false;
   isLoggedIn: boolean = false;
+  // loginSuccess: EventEmitter<boolean> = new EventEmitter<boolean>();
+  showGame: boolean = false;
+
+  gameToVote: object = [];
 
   @Input() dataLogin!: Object;
   @Input() matchesData: any;
@@ -67,9 +71,13 @@ export class ResultatsMatchsComponent implements OnInit {
       })
   }
 
-  playGame(){
+  playGame(elem: any){
+    this.gameToVote = elem;
+
     if(this.cookieExists()){
-      console.log('needs to open game');
+      console.log('needs to open game', elem);
+      this.showGame = true;
+      this.showLogin = false;
     } else {
       this.showLogin = true;
     }
@@ -98,6 +106,12 @@ export class ResultatsMatchsComponent implements OnInit {
   parseMyDate(date: string) {
     let first = date.split('/');
     return `${first[1]}/${first[0]}/${first[2]}`;
+  }
+
+  loginSuccess(event: any){
+    console.log('login succeeded', event);
+    this.showGame = true;
+
   }
 
 }
