@@ -17,12 +17,14 @@ export class ResultatsMatchsComponent implements OnInit {
   public loaded:boolean = false;
   public uniqueDates: any = [];
 
-  showLogin: boolean = false;
-  isLoggedIn: boolean = false;
-  // loginSuccess: EventEmitter<boolean> = new EventEmitter<boolean>();
-  showGame: boolean = false;
+  public showLogin: boolean = false;
+  public isLoggedIn: boolean = false;
 
-  gameToVote: object = [];
+  public showGame: boolean = false;
+
+  public gameToVote: object = [];
+
+  public trigramme: string = '';
 
   @Input() dataLogin!: Object;
   @Input() matchesData: any;
@@ -78,6 +80,7 @@ export class ResultatsMatchsComponent implements OnInit {
       console.log('needs to open game', elem);
       this.showGame = true;
       this.showLogin = false;
+      this.trigramme = this.cookie.getCookie('user');
     } else {
       this.showLogin = true;
     }

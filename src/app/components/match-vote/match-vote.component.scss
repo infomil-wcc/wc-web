@@ -305,12 +305,19 @@
       color: darken($aqua, 30%);
       background: lighten($aqua, 10%);
     }
+
+    &:disabled {
+      pointer-events: none;
+      background: lightgray;
+      color: darkgray;
+      opacity: 0.8;
+    }
   }
 
-  // &.R16,&.SF,&.QF,&.WCF {
+  &.R16,&.SF,&.QF,&.WCF {
 
-  //   .winDraw {
-  //     justify-content: space-evenly;
-  //   }
-  // }
+    .winDraw {
+      justify-content: space-evenly;
+    }
+  }
 }

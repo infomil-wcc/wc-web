@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 
@@ -10,11 +10,13 @@ export class SendtoformService {
 
   constructor(private http: HttpClient) { }
 
-  settings: Object = {
-
+  private httpOptions: Object = {
+    headers: new HttpHeaders({
+      'Content-Type':  'application/json'
+    })
   };
 
   send(url: any){
-    return this.http.post(url,this.settings);
+    return this.http.post(url, this.httpOptions);
   }
 }

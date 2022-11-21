@@ -58,5 +58,5 @@
 
 <app-login (successLogin)="loginSuccess($event)" [(showLogin)]="showLogin" *ngIf="showLogin && !isLoggedIn" [dataLogin]="dataLogin"></app-login>
 
-<app-match-vote *ngIf="showGame" [(showLogin)]="showLogin" [(showGame)]="showGame" [voteType]="'pool'" [matchId]="1" [element]="gameToVote"></app-match-vote>
+<app-match-vote *ngIf="showGame" [(showLogin)]="showLogin" [(showGame)]="showGame" [element]="gameToVote" [trigramme]="trigramme"></app-match-vote>
 

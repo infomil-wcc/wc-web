@@ -23,7 +23,7 @@
 
     <div class="winSelect">
       <label>
-      <input type="radio" name="winDraw" value="A" />
+      <input type="radio" name="winDraw" value="{{this.element.team_a}}" (change)="radioSelected($event)" />
       <span class="radio">
         <img src="{{ teamAFlag }}" alt="" />
       </span>
@@ -36,7 +36,7 @@
 
     <div class="winSelect" *ngIf="stepSelect">
       <label>
-        <input type="radio" name="winDraw" value="D" />
+        <input type="radio" name="winDraw" value="Draw+(Match+nul)" (change)="radioSelected($event)" />
         <span class="radio">
           <span class="material-symbols-outlined icone">close</span>
           Match nul
@@ -54,7 +54,7 @@
 
     <div class="winSelect">
       <label>
-        <input type="radio" name="winDraw" value="B" />
+        <input type="radio" name="winDraw" value="{{this.element.team_b}}" (change)="radioSelected($event)" />
         <span class="radio">
           <img src="{{ teamBFlag}}" alt="" />
 
@@ -69,7 +69,7 @@
 
   </div>
 
-  <div class="matchVote__section halfTime flex justify-between wrap" *ngIf="this.element.group == 'SF' || this.element.group == 'WCF'">
+  <div class="matchVote__section halfTime flex justify-between wrap" *ngIf="this.element.group == 'WCF'">
     <div class="sectionTitle">
       Quel sera le score à la mi-temps ?
     </div>
@@ -78,18 +78,18 @@
       <div class="flex align-center justify-between">
         <div class="teamName">{{ this.element.team_a }}</div>
         <div class="teamAscore input">
-          <input type="number" value="" />
+          <input type="number" value="" #halfTimeA />
         </div>
       </div>
 
       <div class="sepa">-
-      <button class="btnReset" title="Ré-initialiser le score"><span class="material-symbols-outlined icone">
+      <button class="btnReset" title="Ré-initialiser le score" (click)="halfTimeA.value = ''; halfTimeB.value = ''"><span class="material-symbols-outlined icone">
         restart_alt
         </span></button>
       </div>
       <div class="flex align-center justify-between">
         <div class="teamBscore input">
-          <input type="number" value="" />
+          <input type="number" value="" #halfTimeB />
         </div>
         <div class="teamName">{{ this.element.team_b }}</div>
       </div>
@@ -105,18 +105,18 @@
       <div class="flex align-center justify-between">
         <div class="teamName">{{ this.element.team_a }}</div>
         <div class="teamAscore input aqua">
-          <input type="number" value="" />
+          <input type="number" value="" #fullTimeA />
         </div>
       </div>
 
       <div class="sepa">-
-        <button class="btnReset" title="Ré-initialiser le score"><span class="material-symbols-outlined icone">
+        <button class="btnReset" title="Ré-initialiser le score" (click)="fullTimeA.value = ''; fullTimeB.value = ''"><span class="material-symbols-outlined icone">
           restart_alt
           </span></button>
         </div>
       <div class="flex align-center justify-between">
         <div class="teamBscore input aqua">
-          <input type="number" value="" />
+          <input type="number" value="" #fullTimeB />
         </div>
         <div class="teamName">{{ this.element.team_b }}</div>
       </div>
@@ -131,7 +131,7 @@
     <div class="toggle__container flex align-center justify-center">
       <p>{{ this.element.team_a }}</p>
       <div class="action">
-        <input type="checkbox" name="toggle" id="toggle"/>
+        <input type="checkbox" name="toggle" value="" id="toggle" (input)="firstTeamScoring($event)" />
         <label for="toggle"></label>
       </div>
       <p>{{ this.element.team_b }}</p>
@@ -147,13 +147,13 @@
 
     <div class="scorer">
       <div class="input scorer">
-        <input type="text" />
+        <input type="text" #scorerName />
       </div>
     </div>
   </div>
 
   <div class="matchVote__section validate flex justify-evenly wrap">
     <button class="btn">Annuler</button>
-    <button class="btn">Valider</button>
+    <button class="btn" (click)="validateVote()" [disabled]="winDrawSelection == ''">Valider</button>
   </div>
 </div>
