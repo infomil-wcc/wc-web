@@ -9,7 +9,9 @@ import {SendtoformService} from 'src/app/services/sendtoform.service';
 })
 export class MatchVoteComponent implements OnInit {
 
-  constructor( private cookie: CookieserviceService, private sendVoteService: SendtoformService) { }
+  constructor( private cookie: CookieserviceService, private sendVoteService: SendtoformService) {
+
+   }
 
   @Input() voteType: string = '';
   @Input() matchId: number = 0;
@@ -26,8 +28,10 @@ export class MatchVoteComponent implements OnInit {
   stepSelect: boolean = false;
   btnLoader: boolean = false;
   voteUrl: string = '';
+  builtUrl: string = '';
   winDrawSelection: string = '';
   firstScoring: string = '';
+  submitted!: boolean;
 
   @ViewChild('halfTimeA') halfTimeA!: ElementRef;
   @ViewChild('halfTimeB') halfTimeB!: ElementRef;
@@ -43,14 +47,12 @@ export class MatchVoteComponent implements OnInit {
     this.stepSelect = this.showSelect(this.element.group);
     this.teamAFlag = `https://infomil-wcc.github.io/faq/flags/${this.getImg(this.element.team_a)}`;
     this.teamBFlag = `https://infomil-wcc.github.io/faq/flags/${this.getImg(this.element.team_b)}`;
-    this.voteUrl = `${this.element.formId}/viewform?usp=pp_url&`;
-    //https://docs.google.com/forms/d/e/1FAIpQLScCAlRavO8DJrNWJb1x7R1x2WgMZqRVrfav5d8YtE7F1uhHHw/viewform?usp=pp_url&entry.380496373=iml-ol&entry.421480785=S%C3%A9n%C3%A9gal
-    //https://docs.google.com/forms/d/e/1FAIpQLScCAlRavO8DJrNWJb1x7R1x2WgMZqRVrfav5d8YtE7F1uhHHw/viewform?usp=pp_url&entry.380496373=iml-ol&entry.421480785=Draw+(Match+nul)
+    this.voteUrl = `${this.element.formId}/formResponse?usp=pp_url&`;
   }
 
   closeGame(){
     this.showGameChange.emit(false);
-    console.log('close game');
+    // console.log('close game');
   }
 
   getImg(str: string): string{
@@ -73,43 +75,44 @@ export class MatchVoteComponent implements OnInit {
   firstTeamScoring(event: Event){
     let myVal = event.target as HTMLInputElement;
     this.firstScoring = (myVal.checked) ? this.element.team_b : this.element.team_a;
-    console.log(this.firstScoring);
+    // console.log(this.firstScoring);
   }
 
   validateVote(){
-    console.log('Validate Vote first then proceed ?');
-    let builtUrl;
 
     switch (this.element.group) {
       case 'WCF':
-        builtUrl = this.buildURL('WCF', {'trigramme': this.trigramme, 'winDraw': this.winDrawSelection, 'halfTimeA': this.halfTimeA.nativeElement.value, 'halfTimeB': this.halfTimeB.nativeElement.value, 'fullTimeA': this.fullTimeA.nativeElement.value, 'fullTimeB': this.fullTimeB.nativeElement.value, 'firstScoring': this.firstScoring, 'scorer': this.scorerName.nativeElement.value});
+        this.builtUrl = this.buildURL('WCF', {'trigramme': this.trigramme, 'winDraw': this.winDrawSelection, 'halfTimeA': this.halfTimeA.nativeElement.value, 'halfTimeB': this.halfTimeB.nativeElement.value, 'fullTimeA': this.fullTimeA.nativeElement.value, 'fullTimeB': this.fullTimeB.nativeElement.value, 'firstScoring': this.firstScoring, 'scorer': this.scorerName.nativeElement.value});
         break;
 
       case 'SF':
       case 'QF':
-        builtUrl = this.buildURL('SF', {'trigramme': this.trigramme, 'winDraw': this.winDrawSelection, 'fullTimeA': this.fullTimeA.nativeElement.value, 'fullTimeB': this.fullTimeB.nativeElement.value, 'scorer': this.scorerName.nativeElement.value});
+        this.builtUrl = this.buildURL('SF', {'trigramme': this.trigramme, 'winDraw': this.winDrawSelection, 'fullTimeA': this.fullTimeA.nativeElement.value, 'fullTimeB': this.fullTimeB.nativeElement.value, 'scorer': this.scorerName.nativeElement.value});
       break
 
       case 'R16':
-        builtUrl = this.buildURL('SF', {'trigramme': this.trigramme, 'winDraw': this.winDrawSelection, 'fullTimeA': this.fullTimeA.nativeElement.value, 'fullTimeB': this.fullTimeB.nativeElement.value});
+        this.builtUrl = this.buildURL('SF', {'trigramme': this.trigramme, 'winDraw': this.winDrawSelection, 'fullTimeA': this.fullTimeA.nativeElement.value, 'fullTimeB': this.fullTimeB.nativeElement.value});
         break;
 
       default:
-        builtUrl = this.buildURL('pool', {'trigramme': this.trigramme,'winDraw': this.winDrawSelection});
+        this.builtUrl = this.buildURL('pool', {'trigramme': this.trigramme,'winDraw': this.winDrawSelection});
         break;
     }
 
-    console.log('Built URL =>', builtUrl);
+    console.log('Built URL =>', this.builtUrl);
 
-    this.sendVoteService.send(builtUrl).subscribe((res)=>{
-      console.log(res);
-    })
+    // this.sendVoteService.send(this.builtUrl).subscribe((res)=>{
+    //   console.log(res);
+    // })
 
+    setTimeout(() => {
+      this.closeGame();
+    }, 1000);
   }
 
 
   buildURL(type: string, data: any): string {
-    console.log('build URL', type, data);
+    // console.log('build URL', type, data);
     switch (type) {
       case 'WCF':
         return `${this.voteUrl}${this.element.eTrigramme}=${data.trigramme}&${this.element.eWinDraw}=${data.winDraw}&${this.element.eHalfScoreA}=${data.halfTimeA}&${this.element.eHalfScoreB}=${data.halfTimeB}&${this.element.eFullScoreA}=${data.fullTimeA}&${this.element.eFullScoreB}=${data.fullTimeB}&${this.element.eFirstGoal}=${data.firstScoring}&${this.element.eScorer}=${data.scorer}`;
@@ -128,5 +131,11 @@ export class MatchVoteComponent implements OnInit {
         return `${this.voteUrl}${this.element.eTrigramme}=${data.trigramme}&${this.element.eWinDraw}=${data.winDraw}`;
       break;
     }
+  }
+
+  resetAccount(){
+    this.cookie.delCookies();
+    this.showLoginChange.emit(true);
+    this.closeGame();
   }
 }

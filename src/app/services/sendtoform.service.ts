@@ -17,6 +17,6 @@ export class SendtoformService {
   };
 
   send(url: any){
-    return this.http.post(url, this.httpOptions);
+    return this.http.get(url);
   }
 }

@@ -26,7 +26,7 @@ export class AppComponent implements OnInit{
     });
 
     if(!this.dataLoaded) {
-      console.log('Data not loaded...');
+      // console.log('Data not loaded...');
       this.getData();
     }
   }
@@ -34,7 +34,7 @@ export class AppComponent implements OnInit{
   getData():void {
     this.loginService.retrieveLogins().subscribe((data)=>{
       this.dataLogin = data;
-      console.log('D loaded...');
+      // console.log('D loaded...');
       this.getMatchesData();
     });
   }
@@ -42,7 +42,7 @@ export class AppComponent implements OnInit{
   getMatchesData():void {
     this.matchesService.getMatches().subscribe((data)=>{
       this.matchesData = data;
-      console.log('M loaded...');
+      // console.log('M loaded...');
       this.dataLoaded = true;
     })
   }
