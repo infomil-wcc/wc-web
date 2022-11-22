@@ -320,7 +320,7 @@ div.input {
 
     .result {
       margin: 0 auto;
-      justify-content: center;
+      // justify-content: center;
     }
 
     .draw,
@@ -331,6 +331,8 @@ div.input {
       padding:5px;
       border-radius: 2px;
       margin-right: 0.5rem;
+      width: 50px;
+    flex-shrink: 0;
     }
 
     .draw {
@@ -343,4 +345,40 @@ input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
+}
+
+.btnLoader {
+  font-weight: normal;
+  position: relative;
+
+  &.loading.btn {
+    pointer-events: none;
+    background: rgba($mint,0.5) !important;
+    color: $aqua;
+  }
+
+  .load {
+    position: absolute;
+    right: 22px;
+    top: 10px;
+    display: block;
+    width: 20px;
+    height: 20px;
+    border: 4px solid #fff;
+    border-radius: 100%;
+    border-top: 7px solid transparent;
+    animation: load-animate infinite linear 1s;
+  }
+}
+@keyframes load-animate {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(180deg);
+    opacity: 0.35;
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }

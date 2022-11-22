@@ -33,6 +33,26 @@
     }
   }
 
+  .notice {
+    width: 100%;
+    background: white;
+    color: $primaryColor;
+    padding: 5px;
+    text-align: center;
+
+    p {
+      margin: 0.25rem 0;
+    }
+
+    .trigramme {
+      background: $primaryColor;
+      color: white;
+      padding: 5px 10px;
+      border-radius: 5px;
+      margin-right: 8px;
+    }
+  }
+
   .sectionTitle {
     width: 100%;
     font-size: 1.2rem;
@@ -300,6 +320,8 @@
 
   .btn {
     background: $aqua;
+    width: 10rem;
+    padding: 0.8rem 1rem;
 
     &:hover {
       color: darken($aqua, 30%);
