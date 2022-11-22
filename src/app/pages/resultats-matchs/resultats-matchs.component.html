@@ -37,7 +37,7 @@
         <!-- {{item.winDraw}} -->
 
         <div class="vote">
-          <button class="btnVote" [ngClass]="{'disabled' : item.activeToVote == 0}" *ngIf="!item.hasPlayed" (click)="playGame(item)">
+          <button class="btnVote" [ngClass]="{'disabled' : item.activeToVote == 0 || item.score_a !=='' || item.score_b !== ''}" *ngIf="!item.hasPlayed" (click)="playGame(item)">
             <ng-container>Pronostiquer</ng-container>
           </button>
 

@@ -35,6 +35,8 @@ export class AppComponent implements OnInit{
     this.loginService.retrieveLogins().subscribe((data)=>{
       this.dataLogin = data;
       // console.log('D loaded...');
+      // console.log(this.dataLogin);
+
       this.getMatchesData();
     });
   }

@@ -26,6 +26,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     // console.log(this.dataLogin.data);
+    // console.log(atob(this.dataLogin.data[3].password));
   }
 
   toggleType(){
@@ -60,7 +61,7 @@ export class LoginComponent implements OnInit {
   }
 
   checkPass(pass: string, element: any){
-    if(element.password == pass){
+    if(atob(element.password) == pass){
       this.passOK = true;
       this.cookie.setCookie('user', element.username);
       this.loginSuccess();
