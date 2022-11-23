@@ -27,7 +27,8 @@ export class AppComponent implements OnInit{
 
     if(!this.dataLoaded) {
       // console.log('Data not loaded...');
-      this.getData();
+      // this.getData();
+      this.getMatchesData();
     }
   }
 
@@ -44,14 +45,14 @@ export class AppComponent implements OnInit{
   getMatchesData():void {
     this.matchesService.getMatches().subscribe((data)=>{
       this.matchesData = data;
-      // console.log('M loaded...');
+      console.log('Matches loaded...');
       this.dataLoaded = true;
     })
   }
 
   internalRoute(route: string):void {
     switch (route) {
-      case 'resultats':
+      case 'les-matches':
         this.page = 1;
         break;
       case 'les-jeux':

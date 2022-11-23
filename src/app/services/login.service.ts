@@ -13,4 +13,8 @@ export class LoginService {
   retrieveLogins(){
     return this.http.get('https://script.google.com/macros/s/AKfycbwiKXYiOVAZsNnJF8W6T5RYhmsxpl5SXI5ktOafV4jft4-FvMB2X5BUNtij8uTlZG7X/exec');
   }
+
+  getLogin(req: any){
+    return this.http.get(`https://script.google.com/macros/s/AKfycbzun78aOgIdSxr9yIFcq4rLubFO9dxofikEpaCJKwRkLmdvluuaFyhCziLe9Yi0Fvcd/exec?user=${req}`)
+  }
 }

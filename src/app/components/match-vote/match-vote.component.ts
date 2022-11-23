@@ -19,9 +19,11 @@ export class MatchVoteComponent implements OnInit {
   @Input() showGame: boolean = false;
   @Input() showLogin: boolean = false;
   @Input() trigramme!: string;
+  @Input() dataLogin!: any;
 
   @Output() showGameChange =  new EventEmitter<boolean>();
   @Output() showLoginChange = new EventEmitter<boolean>();
+  @Output() gamePlayed: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   teamAFlag!: string;
   teamBFlag!: string;
@@ -52,7 +54,6 @@ export class MatchVoteComponent implements OnInit {
 
   closeGame(){
     this.showGameChange.emit(false);
-    // console.log('close game');
   }
 
   getImg(str: string): string{
@@ -105,8 +106,13 @@ export class MatchVoteComponent implements OnInit {
     //   console.log(res);
     // })
 
+
     setTimeout(() => {
-      this.closeGame();
+      this.gamePlayed.emit(true);
+
+      setTimeout(() => {
+        this.closeGame();
+      }, 500);
     }, 1000);
   }
 
