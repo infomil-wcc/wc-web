@@ -20,6 +20,7 @@ import { PoolVoteComponent } from './components/pool-vote/pool-vote.component';
 import { MatchVoteComponent } from './components/match-vote/match-vote.component';
 import { LoginComponent } from './components/login/login.component';
 import { PreloaderComponent } from './components/preloader/preloader.component';
+import { RegisterComponent } from './components/register/register.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { PreloaderComponent } from './components/preloader/preloader.component';
     PoolVoteComponent,
     MatchVoteComponent,
     LoginComponent,
-    PreloaderComponent
+    PreloaderComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
