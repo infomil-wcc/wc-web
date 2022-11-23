@@ -9,9 +9,7 @@ import {SendtoformService} from 'src/app/services/sendtoform.service';
 })
 export class MatchVoteComponent implements OnInit {
 
-  constructor( private cookie: CookieserviceService, private sendVoteService: SendtoformService) {
-
-   }
+  constructor( private cookie: CookieserviceService, private sendVoteService: SendtoformService) {}
 
   @Input() voteType: string = '';
   @Input() matchId: number = 0;

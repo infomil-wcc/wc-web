@@ -18,19 +18,14 @@ export class ResultatsMatchsComponent implements OnInit {
   public match: any = [];
   public loaded:boolean = false;
   public uniqueDates: any = [];
-
   public showLogin: boolean = false;
   public isLoggedIn: boolean = false;
-
   public showGame: boolean = false;
-
   public gameToVote: object = [];
-
   public trigramme: string = '';
-
   public userData!: any;
-
   public currentGameId!: any;
+  public showRegister: boolean = false;
 
   @Input() dataLogin!: Object;
   @Input() matchesData: any;
@@ -177,6 +172,13 @@ export class ResultatsMatchsComponent implements OnInit {
   hideGame(event: any){
     this.showGame = false;
     this.refreshMatches();
+  }
+
+  hideRegister(event: any){
+    console.log('hide Register', event);
+    this.showRegister = event;
+
+    console.log('showRegister', this.showRegister);
   }
 }
 

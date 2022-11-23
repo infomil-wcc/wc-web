@@ -16,12 +16,14 @@ export class LoginComponent implements OnInit {
   public passOK: boolean = true;
   public emptyFields: boolean = false;
   public dataIsLoaded: boolean = false;
+  public btnLoader: boolean = false;
 
   @Input() showLogin!: boolean;
 
   @Output() successLogin: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output() showLoginChange = new EventEmitter<boolean>();
   @Output() hideGame: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output() showReg: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   @Input() dataLogin!: any;
   @Input() matchesData!: any;
@@ -39,12 +41,14 @@ export class LoginComponent implements OnInit {
 
   loginTrial(login: string, pass: string){
     if(pass !=='' && login !=='') {
+      this.btnLoader = true;
       this.checkLogin(login, pass);
       this.emptyFields = false;
     } else if(pass =='' || login ==''){
       this.emptyFields = true;
       this.loginOK = true;
       this.passOK = true;
+      this.btnLoader = false;
     }
   }
 
@@ -83,6 +87,7 @@ export class LoginComponent implements OnInit {
     } else {
       this.passOK = false;
       this.cookie.delCookies();
+      this.btnLoader = false;
     }
   }
 
@@ -106,4 +111,10 @@ export class LoginComponent implements OnInit {
     this.showLoginChange.emit(false);
   }
 
+  hideRegister(ev: any){
+    this.showReg.emit(true);
+    setTimeout(() => {
+      this.hideLogin();
+    }, 500);
+  }
 }

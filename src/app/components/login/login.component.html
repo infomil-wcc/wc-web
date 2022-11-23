@@ -1,5 +1,12 @@
 <div class="preloaderContainer flex align-center justify-center">
   <div class="login flex">
+    <h3>
+      <span class="material-symbols-outlined icone">
+        account_circle
+        </span>
+      AUTHENTIFICATION</h3>
+    <p>Veuillez saisir vos identifiants pour pouvoir voter</p>
+
     <div class="emptyError" *ngIf="emptyFields">
       <span>les champs login et mot de passe doivent être renseigner.</span>
     </div>
@@ -20,9 +27,11 @@
 
 
     <div class="login__bottom flex justify-between align-center">
-      <button class="btnCreate link">Créer mon compte</button>
+      <div class="flex creerCompte">Pas de compte? <span (click)="hideRegister(false)">M'en créer un</span></div>
 
-      <button class="btn btnLogin" (click)="loginTrial(trigramme.value, pass.value)">M'identifier</button>
+      <button class="btn btnLogin btnLoader" (click)="loginTrial(trigramme.value, pass.value)">
+        <span class="load" *ngIf="btnLoader"></span>
+        M'identifier</button>
     </div>
 
 

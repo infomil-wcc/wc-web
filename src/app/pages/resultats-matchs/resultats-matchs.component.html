@@ -94,7 +94,8 @@
   </li>
 </ul>
 
-<app-login (successLogin)="loginSuccess($event)" [(showLogin)]="showLogin" *ngIf="showLogin" [dataLogin]="dataLogin" [matchId]="currentGameId" (hideGame)="hideGame($event)"></app-login>
+<app-login (successLogin)="loginSuccess($event)" [(showLogin)]="showLogin" *ngIf="showLogin" [dataLogin]="dataLogin" [matchId]="currentGameId" (hideGame)="hideGame($event)" (showReg)="hideRegister($event)"></app-login>
 
 <app-match-vote *ngIf="showGame" [(showLogin)]="showLogin" [(showGame)]="showGame" [element]="gameToVote" [trigramme]="trigramme" [dataLogin]="dataLogin" (gamePlayed)="gameUpdated($event)"></app-match-vote>
 
+<app-register *ngIf="showRegister" (hideregister)="hideRegister($event)"></app-register>

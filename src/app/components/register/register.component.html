@@ -1,19 +1,45 @@
 <p>register works!</p>
 <div class="preloaderContainer flex align-center justify-center">
     <div class="register flex">
+      <div class="register__form" *ngIf="stepRegister">
+        <h3>
+          <span class="material-symbols-outlined icone">
+            person_add
+            </span>
+          Créer mon compte</h3>
+        <p>Veuillez saisir votre nom complet ainsi que votre trigramme(iml-xxx) pour recevoir un mot de passe</p>
 
-      <div class="input">
-        <input type="text" #trigramme value="" autocomplete="off" />
-        <label>VOTRE TRIGRAMME</label>
-        <span class="error">Identifiant non trouvée</span>
+        <div class="input">
+          <input type="text" #nom value="" autocomplete="off" required />
+          <label>Nom & Prénom</label>
+        </div>
+
+        <div class="input">
+          <input type="text" #nom value="" autocomplete="off" required/>
+          <label>Votre trigramme</label>
+        </div>
+
+
+        <div class="login__bottom flex justify-between align-center">
+          <button class="btn">Créer mon compte</button>
+        </div>
       </div>
 
+      <div class="register__res" *ngIf="!stepRegister">
+        <h3>
+          <span class="material-symbols-outlined icone">
+            add_task
+            </span>
+          Merci, <span>IML-XXX</span> votre compte à bien été créer</h3>
+        <p>Veuiller conserver et utiliser le mot de passe ci-dessous pour tous les jeux qui vous seronts proposer.</p>
 
-      <div class="login__bottom flex justify-between align-center">
-        <button class="btnCreate link">Créer mon compte</button>
-        <button class="btn btnLogin">M'identifier</button>
+        <div class="input passRead">
+          <input type="text" #password value="MOTDEPASSE" readonly/>
+          <span class="material-symbols-outlined copy" (click)="copyToClipboard()">
+            {{iconCopy}}
+            </span>
+        </div>
       </div>
-
 
       <button class="close" (click)="hideRegister()">
         <span class="material-symbols-outlined">

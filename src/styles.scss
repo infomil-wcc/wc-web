@@ -166,7 +166,7 @@ div.input {
     }
   }
 
-  .togglePass {
+  .togglePass, .copy {
     position: absolute;
     right: 15px;
     top: 28px;
@@ -370,6 +370,7 @@ input[type=number]::-webkit-outer-spin-button {
     animation: load-animate infinite linear 1s;
   }
 }
+
 @keyframes load-animate {
   0% {
     transform: rotate(0deg);
