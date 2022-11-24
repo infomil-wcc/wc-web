@@ -13,11 +13,11 @@
 
           <div class="input">
             <input type="text" #name value="" autocomplete="off" required (input)="checkInput()" />
-            <label>Nom & Prénom</label>
+            <label>Prénom & Nom</label>
           </div>
 
           <div class="input">
-            <input type="text" #trigramme value="" autocomplete="off" required (input)="checkInput()"/>
+            <input type="text" #trigramme value="" autocomplete="off" required (input)="checkInput()" placeholder="iml-xxx" />
             <label>Votre trigramme (iml-XXX)</label>
           </div>
 

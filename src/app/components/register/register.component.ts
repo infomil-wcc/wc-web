@@ -25,8 +25,8 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit(): void {
     // pour les tests
-    this.displayName = 'Stephanie Chovrimootoo';
-    this.trigrammeDisplay ='iml-svm';
+    // this.displayName = 'Stephanie Chovrimootoo';
+    // this.trigrammeDisplay ='iml-svm';
   }
 
   checkInput(){
@@ -41,13 +41,14 @@ export class RegisterComponent implements OnInit {
   registerUser() {
     if(!this.registerDisabled){
       this.displayName = this.name.nativeElement.value;
+      this.trigrammeDisplay = this.trigramme.nativeElement.value;
       this.btnLoader = true;
 
       this.loginService.registerUser(this.trigramme.nativeElement.value, this.name.nativeElement.value).subscribe((res: any)=>{
-        console.log(res);
+        //console.log(res);
         if(res.data !=''){
           this.stepRegister = false;
-          this.password.nativeElement.value = res.data;
+          this.password.nativeElement.value = res.data.pass;
           this.btnLoader = false;
         }
       });

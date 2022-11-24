@@ -17,6 +17,7 @@ export class LoginComponent implements OnInit {
   public emptyFields: boolean = false;
   public dataIsLoaded: boolean = false;
   public btnLoader: boolean = false;
+  public visibility: string = 'visibility_off';
 
   @Input() showLogin!: boolean;
 
@@ -32,11 +33,17 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     // console.log(this.dataLogin.data);
     // console.log(atob(this.dataLogin.data[3].password));
-    console.log(this.matchId);
+    // console.log(this.matchId);
   }
 
   toggleType(){
-    (this.passType == 'password') ? this.passType = 'text' : this.passType = 'password';
+    if(this.passType == 'password'){
+      this.passType = 'text';
+      this.visibility = 'visibility';
+    } else {
+      this.passType = 'password';
+      this.visibility = 'visibility_off'
+    }
   }
 
   loginTrial(login: string, pass: string){
@@ -80,7 +87,7 @@ export class LoginComponent implements OnInit {
       this.cookie.setCookie('user', data.username);
       this.cookie.setCookie('userData', JSON.stringify(data));
 
-      console.log(data);
+      // console.log(data);
 
       this.checkGamePlayed(this.matchId, data);
 
@@ -99,7 +106,7 @@ export class LoginComponent implements OnInit {
   checkGamePlayed(matchId: any, data: any){
     if(data[`M${matchId}`] == 1){
       // TODO => Display error message.
-      console.log('Game already played =>', matchId);
+      // console.log('Game already played =>', matchId);
       this.hideGame.emit(true);
       this.hideLogin();
     } else {
