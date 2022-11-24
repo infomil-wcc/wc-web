@@ -22,6 +22,7 @@ import { LoginComponent } from './components/login/login.component';
 import { PreloaderComponent } from './components/preloader/preloader.component';
 import { RegisterComponent } from './components/register/register.component';
 import { HpNewsComponent } from './components/hp-news/hp-news.component';
+import { PopupTricheComponent } from './components/popup-triche/popup-triche.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { HpNewsComponent } from './components/hp-news/hp-news.component';
     LoginComponent,
     PreloaderComponent,
     RegisterComponent,
-    HpNewsComponent
+    HpNewsComponent,
+    PopupTricheComponent
   ],
   imports: [
     BrowserModule,

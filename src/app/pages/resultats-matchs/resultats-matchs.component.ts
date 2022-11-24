@@ -26,6 +26,7 @@ export class ResultatsMatchsComponent implements OnInit {
   public userData!: any;
   public currentGameId!: any;
   public showRegister: boolean = false;
+  public showPopinTriche: boolean = false;
 
   @Input() dataLogin!: Object;
   @Input() matchesData: any;

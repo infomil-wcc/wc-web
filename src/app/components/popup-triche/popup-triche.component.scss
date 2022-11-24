@@ -1,0 +1,47 @@
+@import "./../../../variables.scss";
+
+
+.preloaderContainer {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: 2000;
+  left: 0;
+  top: 0;
+  background: rgba(0,0,0,0.8);
+}
+
+.tricheur {
+  position: relative;
+  flex-direction: column;
+  padding: 1rem 2rem 2rem;
+  background: #222;
+  width: 35rem;
+  border-radius: 10px;
+
+  h3 {
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+  }
+
+  .icone {
+    font-size: 5rem;
+    font-weight: normal;
+  }
+
+  h3 + p {
+    margin: 0 0 1.5rem;
+  }
+
+  .close {
+    position: absolute;
+    top: -40px;
+    right: -40px;
+
+    span {
+      color: $secondaryColor;
+    }
+  }
+
+}

@@ -75,8 +75,20 @@
         <!-- {{item.winDraw}} -->
 
         <div class="vote">
-          <button class="btnVote" [ngClass]="{'disabled' : item.activeToVote == 0 || item.score_a !=='' || item.score_b !== '' || item.userPlayed == true}" *ngIf="!item.hasPlayed" (click)="playGame(item)">
+          <button class="btnVote" *ngIf="item.activeToVote == 1 && item.score_a ==='' && item.score_b === '' && item.userPlayed == false" (click)="playGame(item)">
             <ng-container>Pronostiquer</ng-container>
+          </button>
+
+          <button class="btnVote disabled" *ngIf="item.score_a !=='' && item.score_b !== '' && !item.hasPlayed" (click)="showPopinTriche = true">
+            <ng-container>Vote Fermer</ng-container>
+          </button>
+
+          <button class="btnVote disabled" *ngIf="item.userPlayed == true" (click)="showPopinTriche = true">
+            <ng-container>Vote déjà fait</ng-container>
+          </button>
+
+          <button class="btnVote disabled" *ngIf="item.activeToVote == 0" (click)="showPopinTriche = true">
+            <ng-container>Vote non-ouvert</ng-container>
           </button>
 
           <div class="result flex align-center" *ngIf="item.hasPlayed">
@@ -93,6 +105,7 @@
 
   </li>
 </ul>
+<app-popup-triche *ngIf="showPopinTriche" [(showPopinTriche)]="showPopinTriche"></app-popup-triche>
 
 <app-login (successLogin)="loginSuccess($event)" [(showLogin)]="showLogin" *ngIf="showLogin" [dataLogin]="dataLogin" [matchId]="currentGameId" (hideGame)="hideGame($event)" (showReg)="hideRegister($event)"></app-login>
 
