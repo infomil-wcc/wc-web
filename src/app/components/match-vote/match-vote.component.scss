@@ -39,9 +39,17 @@
     color: $primaryColor;
     padding: 5px;
     text-align: center;
+    line-height: 1.5rem;
 
     p {
       margin: 0.25rem 0;
+    }
+
+    .link {
+      color: $aqua;
+      cursor: pointer;
+      font-weight: bold;
+      text-decoration: underline;
     }
 
     .trigramme {
@@ -342,6 +350,10 @@
       background: lightgray;
       color: darkgray;
       opacity: 0.8;
+    }
+
+    &:first-of-type {
+      background: darken($aqua, 15%);
     }
   }
 

@@ -20,6 +20,7 @@ export class RegisterComponent implements OnInit {
   public displayName: string = '';
   public trigrammeDisplay: string = '';
   public btnLoader: boolean = false;
+  public regSuccess: boolean = true;
 
   constructor(private loginService: LoginService) { }
 
@@ -46,11 +47,16 @@ export class RegisterComponent implements OnInit {
 
       this.loginService.registerUser(this.trigramme.nativeElement.value, this.name.nativeElement.value).subscribe((res: any)=>{
         //console.log(res);
-        if(res.data !=''){
-          this.stepRegister = false;
+        //debugger;
+        if(res.data.sucess){
+          this.regSuccess = true;
           this.password.nativeElement.value = res.data.pass;
-          this.btnLoader = false;
+        }else{
+          this.regSuccess = false;
         }
+          this.btnLoader = false;
+          this.stepRegister = false;
+
       });
     }
   }
