@@ -77,6 +77,9 @@
         <div class="vote">
           <button class="btnVote" *ngIf="item.activeToVote == 1 && item.score_a ==='' && item.score_b === '' && item.userPlayed == false" (click)="playGame(item)">
             <ng-container>Pronostiquer</ng-container>
+            <span class="material-symbols-outlined icn">
+              arrow_forward_ios
+              </span>
           </button>
 
           <button class="btnVote disabled" *ngIf="item.score_a !=='' && item.score_b !== '' && !item.hasPlayed" (click)="showPopinTriche = true">
