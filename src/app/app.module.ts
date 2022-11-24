@@ -21,6 +21,7 @@ import { MatchVoteComponent } from './components/match-vote/match-vote.component
 import { LoginComponent } from './components/login/login.component';
 import { PreloaderComponent } from './components/preloader/preloader.component';
 import { RegisterComponent } from './components/register/register.component';
+import { HpNewsComponent } from './components/hp-news/hp-news.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { RegisterComponent } from './components/register/register.component';
     MatchVoteComponent,
     LoginComponent,
     PreloaderComponent,
-    RegisterComponent
+    RegisterComponent,
+    HpNewsComponent
   ],
   imports: [
     BrowserModule,

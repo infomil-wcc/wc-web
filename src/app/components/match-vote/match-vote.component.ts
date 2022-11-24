@@ -1,6 +1,6 @@
 import { AbstractType, Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { CookieserviceService } from 'src/app/services/cookieservice.service';
-import {SendtoformService} from 'src/app/services/sendtoform.service';
+import { MatchResultsService } from 'src/app/services/match-results.service';
 
 @Component({
   selector: 'app-match-vote',
@@ -9,7 +9,7 @@ import {SendtoformService} from 'src/app/services/sendtoform.service';
 })
 export class MatchVoteComponent implements OnInit {
 
-  constructor( private cookie: CookieserviceService, private sendVoteService: SendtoformService) {}
+  constructor( private cookie: CookieserviceService, private matchService: MatchResultsService) {}
 
   @Input() voteType: string = '';
   @Input() matchId: number = 0;
@@ -32,12 +32,14 @@ export class MatchVoteComponent implements OnInit {
   winDrawSelection: string = '';
   firstScoring: string = '';
   submitted!: boolean;
+  passOk: boolean = false;
 
   @ViewChild('halfTimeA') halfTimeA!: ElementRef;
   @ViewChild('halfTimeB') halfTimeB!: ElementRef;
   @ViewChild('fullTimeA') fullTimeA!: ElementRef;
   @ViewChild('fullTimeB') fullTimeB!: ElementRef;
   @ViewChild('scorerName') scorerName!: ElementRef;
+  @ViewChild('pass') pass!: ElementRef;
 
 
 
@@ -48,6 +50,7 @@ export class MatchVoteComponent implements OnInit {
     this.teamAFlag = `https://infomil-wcc.github.io/faq/flags/${this.getImg(this.element.team_a)}`;
     this.teamBFlag = `https://infomil-wcc.github.io/faq/flags/${this.getImg(this.element.team_b)}`;
     this.voteUrl = `${this.element.formId}/formResponse?usp=pp_url&`;
+    // console.log('showing game ->', this.element);
   }
 
   closeGame(){
@@ -98,20 +101,50 @@ export class MatchVoteComponent implements OnInit {
         break;
     }
 
-    console.log('Built URL =>', this.builtUrl);
+    // console.log('Built URL =>', this.builtUrl);
+    // this.matchService.updateMatchVote(this.element.gameId.toString(), this.trigramme, this.pass.nativeElement.value).subscribe((res)=>{
+    //   console.log('update match done ->', res);
 
-    // this.sendVoteService.send(this.builtUrl).subscribe((res)=>{
-    //   console.log(res);
+    //   setTimeout(() => {
+    //     // this.gamePlayed.emit(true);
+
+    //     setTimeout(() => {
+    //       // this.closeGame();
+    //     }, 500);
+    //   }, 1000);
+
     // })
 
+    this.updateViaFetch(this.element.gameId.toString(), this.trigramme);
+  }
 
-    setTimeout(() => {
-      this.gamePlayed.emit(true);
+  updateViaFetch(gameId: any, trigramme:any){
+    var myHeaders = new Headers();
+    myHeaders.append("Cookie", "NID=511=Nc0Y8lxUOEJeaBaWHAL0xo-voSQ70jY4d-6XV3V41eHiD_qE287CeQd-yRqo5_L-Z5ATjr90knjuOsadRZFGd5XRXouvm2DV7lsWFaY3sPhcsXfC4LYj7ainarTXz924baq-zwtKxL4oP8PT9XP6IBIcUdCOyVTtAesFdob1NVM");
 
-      setTimeout(() => {
-        this.closeGame();
-      }, 500);
-    }, 1000);
+    let requestOptions = {
+      method: 'GET',
+      headers: myHeaders,
+      redirect: 'follow'
+    } as any;
+
+    fetch(`https://script.google.com/macros/s/AKfycbzun78aOgIdSxr9yIFcq4rLubFO9dxofikEpaCJKwRkLmdvluuaFyhCziLe9Yi0Fvcd/exec?user=${trigramme}&matchId=${gameId}`, requestOptions)
+      .then((response) => {
+        response.text()
+      })
+      .then((result) => {
+        // console.log(result)
+           setTimeout(() => {
+          this.gamePlayed.emit(true);
+
+          setTimeout(() => {
+            this.closeGame();
+          }, 500);
+        }, 1000);
+      })
+      .catch((error)=> {
+        // console.log('error', error)
+      });
   }
 
 
@@ -141,5 +174,13 @@ export class MatchVoteComponent implements OnInit {
     this.cookie.delCookies();
     this.showLoginChange.emit(true);
     this.closeGame();
+  }
+
+  checkPass() {
+    if(this.pass.nativeElement.value !== ''){
+      this.passOk = true;
+    } else {
+      this.passOk = false;
+    }
   }
 }

@@ -169,7 +169,7 @@ div.input {
   .togglePass, .copy {
     position: absolute;
     right: 15px;
-    top: 28px;
+    top: 36px;
     font-size: 1.5rem;
     color: $secondaryColor;
     cursor: pointer;
@@ -201,12 +201,27 @@ div.input {
     color: darken($secondaryColor, 30%)
   }
 
+  &.disabled {
+    pointer-events: none;
+    background: lightgray;
+    color: darkgray;
+    opacity: 0.5;
+  }
+
 }
 
 .primaryBackground {
   background: $primaryColor url("./background.png");
   background-size: cover;
   background-attachment: fixed;
+  height: calc(100% - 3rem);
+}
+
+.secondaryBackground {
+  background: $primaryColor url("./classement.png");
+  background-size: cover;
+  background-attachment: fixed;
+  height: calc(100% - 3rem);
 }
 
 .group {

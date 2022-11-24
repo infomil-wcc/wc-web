@@ -43,21 +43,15 @@ export class ResultatsMatchsComponent implements OnInit {
 
   checkUserData() {
     this.trigramme = this.cookie.getCookie('user');
-
-    (console.log('checking user data ->'));
-
     this.loginService.getLogin(this.trigramme).subscribe((res: any)=>{
       this.userData = res.data[0];
       this.cookie.setCookie('userData',JSON.stringify(this.userData));
-      console.log('data received');
       this.getMatchData('');
     });
   }
 
   getMatchData(type: string){
     this.match.length = 0;
-
-    console.log('supposed empty match data 1 ->', this.match)
 
     let dataLength = this.matchesData.data.length;
     let count = 0;
@@ -105,7 +99,7 @@ export class ResultatsMatchsComponent implements OnInit {
     this.gameToVote = elem;
 
     if(this.cookieExists()){
-      console.log('needs to open game', elem);
+      // console.log('needs to open game', elem);
       this.showLogin = false;
       this.showGame = true;
     } else {
@@ -116,7 +110,7 @@ export class ResultatsMatchsComponent implements OnInit {
 
   cookieExists():boolean {
     (this.cookie.getCookie('user') !== '' && this.cookie.getCookie('userData') !== '') ? this.isLoggedIn = true: this.isLoggedIn = false;
-    console.log('is logged in ?', this.isLoggedIn);
+    // console.log('is logged in ?', this.isLoggedIn);
     return this.isLoggedIn;
   }
 
@@ -140,14 +134,14 @@ export class ResultatsMatchsComponent implements OnInit {
   }
 
   loginSuccess(event: any){
-    console.log('login succeeded', event);
+    // console.log('login succeeded', event);
     this.showGame = true;
     this.isLoggedIn = true;
     this.refreshMatches();
   }
 
   refreshMatches(){
-    console.log('refresh matches');
+    // console.log('refresh matches');
     this.loaded = false;
 
     setTimeout(() => {
@@ -175,10 +169,10 @@ export class ResultatsMatchsComponent implements OnInit {
   }
 
   hideRegister(event: any){
-    console.log('hide Register', event);
+    // console.log('hide Register', event);
     this.showRegister = event;
 
-    console.log('showRegister', this.showRegister);
+    // console.log('showRegister', this.showRegister);
   }
 }
 

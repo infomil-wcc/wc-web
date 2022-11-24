@@ -329,13 +329,19 @@
       <p>Ce vote sera comptabiliser pour <span class="trigramme">{{ trigramme }}</span><span (click)="resetAccount()">Ce n'est pas vous ?</span></p>
     </div>
 
+    <!-- <div class="matchVote__section flex justify-evenly password">
+      <div class="input">
+        <input type="text" #pass value=""  autocomplete="off" (input)="checkPass()" />
+        <label>MOT DE PASSE</label>
+      </div>
+    </div> -->
+
     <div class="matchVote__section validate flex justify-evenly wrap">
       <button class="btn" (click)="closeGame()">Annuler</button>
       <button class="btn btnVote btnLoader" type="submit" [ngClass]="{'loading': btnLoader}" (click)="validateVote(); btnLoader = true" [disabled]="winDrawSelection == ''">
         <span class="load" *ngIf="btnLoader"></span>
         Valider
       </button>
-
     </div>
 
   </form>

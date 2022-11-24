@@ -104,6 +104,16 @@
     &.winDraw {
       padding-bottom: 2.25rem;
     }
+
+    &.password {
+      width: 40%;
+      margin: 0 auto;
+
+      .input {
+        padding-top: 1rem;
+      }
+
+    }
   }
 
   .winSelect {

@@ -22,7 +22,7 @@ export class LesJeuxComponent implements OnInit {
 
   cookieExists():boolean {
     (this.cookie.getCookie('user') !== '')? this.isLoggedIn = true: this.isLoggedIn = false;
-    console.log('is logged in ?', this.isLoggedIn);
+    // console.log('is logged in ?', this.isLoggedIn);
     return this.isLoggedIn;
   }
 

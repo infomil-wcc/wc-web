@@ -45,7 +45,7 @@ export class AppComponent implements OnInit{
   getMatchesData():void {
     this.matchesService.getMatches().subscribe((data)=>{
       this.matchesData = data;
-      console.log('Matches loaded...');
+      console.log('Matches loading...');
       this.dataLoaded = true;
     })
   }
