@@ -48,7 +48,7 @@ export class ResultatsMatchsComponent implements OnInit {
   checkUserData() {
     this.trigramme = this.cookie.getCookie('user');
 
-    console.log('checkUserdata results, trigramme =>', this.trigramme);
+    // console.log('checkUserdata results, trigramme =>', this.trigramme);
 
     if(this.trigramme !== "") {
       this.loginService.getLogin(this.trigramme).subscribe((res: any)=>{
