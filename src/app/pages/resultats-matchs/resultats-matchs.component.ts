@@ -22,7 +22,7 @@ export class ResultatsMatchsComponent implements OnInit {
   public isLoggedIn: boolean = false;
   public showGame: boolean = false;
   public gameToVote: object = [];
-  public trigramme: string = '';
+  public trigramme: string = "";
   public userData!: any;
   public currentGameId!: any;
   public showRegister: boolean = false;
@@ -47,12 +47,20 @@ export class ResultatsMatchsComponent implements OnInit {
 
   checkUserData() {
     this.trigramme = this.cookie.getCookie('user');
-    this.loginService.getLogin(this.trigramme).subscribe((res: any)=>{
-      this.userData = res.data[0];
-      this.cookie.setCookie('userData',JSON.stringify(this.userData));
-      this.getMatchData('');
-      console.log(this.userData);
-    });
+
+    console.log('checkUserdata results, trigramme =>', this.trigramme);
+
+    if(this.trigramme !== "") {
+      this.loginService.getLogin(this.trigramme).subscribe((res: any)=>{
+        this.userData = res.data[0];
+        this.cookie.setCookie('userData',JSON.stringify(this.userData));
+        this.getMatchData('');
+        // console.log(this.userData);
+      });
+    } else {
+      this.getMatchData('all');
+    }
+
   }
 
   getMatchData(type: string){
@@ -61,7 +69,7 @@ export class ResultatsMatchsComponent implements OnInit {
     let dataLength = this.matchesData.data.length;
     let count = 0;
 
-    console.log(this.matchesData);
+    // console.log(this.matchesData);
 
     this.matchesData.data.forEach((elem: any) => {
 

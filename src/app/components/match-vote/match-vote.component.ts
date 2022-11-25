@@ -183,6 +183,7 @@ export class MatchVoteComponent implements OnInit {
 
   resetAccount(){
     this.cookie.delCookies();
+    this.gamePlayed.emit(true);
     this.showLoginChange.emit(true);
     this.closeGame();
   }
