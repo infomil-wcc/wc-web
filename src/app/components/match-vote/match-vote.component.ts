@@ -150,8 +150,8 @@ export class MatchVoteComponent implements OnInit {
 
           setTimeout(() => {
             this.closeGame();
-          }, 500);
-        }, 1000);
+          }, 1000);
+        }, 800);
       })
       .catch((error)=> {
         // console.log('error', error)

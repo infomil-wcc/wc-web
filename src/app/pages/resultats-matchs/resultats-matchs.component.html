@@ -98,9 +98,9 @@
               </span>
           </button>
 
-          <button class="btnVote disabled" *ngIf="item.score_a !=='' && item.score_b !== '' && !item.hasPlayed" (click)="showPopinTriche = true">
+          <!-- <button class="btnVote disabled" *ngIf="!item.hasPlayed && item.activeToVote == 0 && item.userPlayed !== ''" (click)="showPopinTriche = true">
             <ng-container>Vote Fermer</ng-container>
-          </button>
+          </button> -->
 
           <div class="voteFait" *ngIf="item.userPlayed !== ''">
             <ng-container>Votre vote : <br />
@@ -112,7 +112,7 @@
             </ng-container>
           </div>
 
-          <button class="btnVote disabled" *ngIf="item.activeToVote == 0 && !item.hasPlayed" (click)="showPopinTriche = true">
+          <button class="btnVote disabled" *ngIf="item.userPlayed == '' && !item.hasPlayed && item.activeToVote == 0" (click)="showPopinTriche = true">
             <ng-container>Vote non-ouvert</ng-container>
           </button>
 

@@ -9,6 +9,8 @@ export class ClassementsComponent implements OnInit {
 
   constructor() { }
 
+  public showPreloader = !true;
+
   ngOnInit(): void {
   }
 

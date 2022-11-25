@@ -107,6 +107,8 @@ export class ResultatsMatchsComponent implements OnInit {
       if(count == dataLength){
         this.loaded = true;
       }
+
+      // console.log(this.match)
   })
   }
 
