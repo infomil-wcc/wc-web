@@ -91,7 +91,7 @@
         <!-- {{item.winDraw}} -->
 
         <div class="vote">
-          <button class="btnVote" *ngIf="!item.hasPlayed && item.userPlayed == false && item.activeToVote !== 0" (click)="playGame(item)">
+          <button class="btnVote" *ngIf="!item.hasPlayed && item.userPlayed == '' && item.activeToVote !== 0" (click)="playGame(item)">
             <ng-container>Pronostiquer</ng-container>
             <span class="material-symbols-outlined icn">
               arrow_forward_ios
@@ -102,9 +102,15 @@
             <ng-container>Vote Fermer</ng-container>
           </button>
 
-          <button class="btnVote disabled" *ngIf="item.userPlayed == true" (click)="showPopinTriche = true">
-            <ng-container>Vote déjà fait</ng-container>
-          </button>
+          <div class="voteFait" *ngIf="item.userPlayed !== ''">
+            <ng-container>Votre vote : <br />
+              <div class="voted">
+                <ng-container *ngIf="item.userPlayed == 'A'">{{this.item.team_a}} Win</ng-container>
+                <ng-container *ngIf="item.userPlayed == 'B'">{{this.item.team_b}} Win</ng-container>
+                <ng-container *ngIf="item.userPlayed == 'D'">Match Nul</ng-container>
+              </div>
+            </ng-container>
+          </div>
 
           <button class="btnVote disabled" *ngIf="item.activeToVote == 0 && !item.hasPlayed" (click)="showPopinTriche = true">
             <ng-container>Vote non-ouvert</ng-container>

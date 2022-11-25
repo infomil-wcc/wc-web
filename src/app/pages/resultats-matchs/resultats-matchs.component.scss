@@ -63,6 +63,17 @@
     font-size: 8px;
     padding-bottom: 1rem;
   }
+
+  .voteFait {
+    font-size: 12px;
+
+    .voted {
+      font-weight: 700;
+      font-size: 14px;
+      color: $primaryColor;
+      text-transform: uppercase;
+    }
+  }
 }
 
 @import "../../../variables.scss";

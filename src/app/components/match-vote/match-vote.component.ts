@@ -33,6 +33,7 @@ export class MatchVoteComponent implements OnInit {
   firstScoring: string = '';
   submitted!: boolean;
   passOk: boolean = false;
+  voteId: string = '';
 
   @ViewChild('halfTimeA') halfTimeA!: ElementRef;
   @ViewChild('halfTimeB') halfTimeB!: ElementRef;
@@ -72,6 +73,16 @@ export class MatchVoteComponent implements OnInit {
   radioSelected(val: Event){
     let myVal = val.target as HTMLInputElement;
     this.winDrawSelection = myVal.value;
+
+    if(this.winDrawSelection == this.element.team_a){
+      this.voteId = 'A';
+    }
+    else if(this.winDrawSelection == this.element.team_b){
+      this.voteId = 'B';
+    }
+    else {
+      this.voteId = 'D';
+    }
   }
 
   firstTeamScoring(event: Event){
@@ -115,7 +126,7 @@ export class MatchVoteComponent implements OnInit {
 
     // })
 
-    this.updateViaFetch(this.element.gameId.toString(), this.trigramme);
+    this.updateViaFetch(this.element.gameId.toString(), this.trigramme, );
   }
 
   updateViaFetch(gameId: any, trigramme:any){
@@ -128,7 +139,7 @@ export class MatchVoteComponent implements OnInit {
       redirect: 'follow'
     } as any;
 
-    fetch(`https://script.google.com/macros/s/AKfycbzun78aOgIdSxr9yIFcq4rLubFO9dxofikEpaCJKwRkLmdvluuaFyhCziLe9Yi0Fvcd/exec?user=${trigramme}&matchId=${gameId}`, requestOptions)
+    fetch(`https://script.google.com/macros/s/AKfycbzun78aOgIdSxr9yIFcq4rLubFO9dxofikEpaCJKwRkLmdvluuaFyhCziLe9Yi0Fvcd/exec?user=${trigramme}&matchId=${gameId}&vote=${this.voteId}`, requestOptions)
       .then((response) => {
         response.text()
       })

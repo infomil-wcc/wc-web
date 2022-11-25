@@ -51,6 +51,7 @@ export class ResultatsMatchsComponent implements OnInit {
       this.userData = res.data[0];
       this.cookie.setCookie('userData',JSON.stringify(this.userData));
       this.getMatchData('');
+      console.log(this.userData);
     });
   }
 
@@ -90,7 +91,7 @@ export class ResultatsMatchsComponent implements OnInit {
         "eScorer": elem.eScorer,
         "eTrigramme": elem.eTrigramme,
         "eWinDraw": elem.eWinDraw,
-        "userPlayed": (type == 'all') ? false : this.checkPlayedMatches(elem.id)
+        "userPlayed": (type == 'all') ? '' : this.checkPlayedMatches(elem.id)
       }
 
       this.match.push(res);
@@ -177,11 +178,12 @@ export class ResultatsMatchsComponent implements OnInit {
     }, 300);
   }
 
-  checkPlayedMatches(id: any): boolean{
+  checkPlayedMatches(id: any): string{
     if(this.isLoggedIn){
-      return (this.userData[`M${id}`] == 1);
+      // console.log(this.userData[`M${id}`]);
+      return this.userData[`M${id}`];
     } else {
-      return false;
+      return '';
     }
   }
 
