@@ -288,13 +288,18 @@ div.input {
 
   .vs {
     margin: 0 1rem;
+    position: relative;
   }
 
   .teamA,
   .teamB {
+    position: relative;
+
     .teamName {
       text-align: center;
       width: 8rem;
+      display: flex;
+      justify-content: center;
     }
 
     .score{
@@ -344,27 +349,23 @@ div.input {
         justify-content: center;
       }
     }
+  }
 
-    .result {
-      margin: 0 auto;
-      // justify-content: center;
-    }
+  .draw,
+  .win {
+    font-size: 8px;
+    color: white;
+    background: #007430;
+    padding: 5px;
+    border-radius: 2px;
+    width: 20px;
+    position: absolute;
+    top: 0;
+    right: 4px;
+  }
 
-    .draw,
-    .win {
-      font-size: 9px;
-      color: white;
-      background: #007430;
-      padding:5px;
-      border-radius: 2px;
-      margin-right: 0.5rem;
-      width: 50px;
-    flex-shrink: 0;
-    }
-
-    .draw {
-      background: #222;
-    }
+  .draw {
+    background: #222;
   }
 }
 

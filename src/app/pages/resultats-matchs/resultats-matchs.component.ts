@@ -27,6 +27,9 @@ export class ResultatsMatchsComponent implements OnInit {
   public currentGameId!: any;
   public showRegister: boolean = false;
   public showPopinTriche: boolean = false;
+  public filterAvailable: boolean = false;
+  public filterFuture: boolean = false;
+  public filterAll: boolean = true;
 
   @Input() dataLogin!: Object;
   @Input() matchesData: any;
@@ -56,6 +59,8 @@ export class ResultatsMatchsComponent implements OnInit {
 
     let dataLength = this.matchesData.data.length;
     let count = 0;
+
+    console.log(this.matchesData);
 
     this.matchesData.data.forEach((elem: any) => {
 
@@ -94,6 +99,26 @@ export class ResultatsMatchsComponent implements OnInit {
         this.loaded = true;
       }
   })
+  }
+
+  filter(param: string){
+    switch (param) {
+      case 'available':
+        this.filterAvailable = true;
+        this.filterFuture = false;
+        this.filterAll = false;
+        break;
+      case 'future':
+        this.filterFuture = true;
+        this.filterAll = false;
+        this.filterAvailable = false;
+        break;
+      default:
+        this.filterAll = true;
+        this.filterAvailable = false;
+        this.filterFuture = false;
+        break;
+    }
   }
 
   playGame(elem: any){

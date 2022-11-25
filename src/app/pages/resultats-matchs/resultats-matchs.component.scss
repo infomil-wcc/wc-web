@@ -1,5 +1,23 @@
 @import "../../../variables.scss";
 
+.matchesFilter {
+ padding: 2rem;
+ justify-content: flex-end;
+
+ .btnFilter {
+  width: fit-content;
+  padding: 5px 15px;
+  font-size: 12px;
+  border-radius: 20px;
+  margin: 0 10px;
+  background: $goldColor;
+
+  &:hover {
+    background: lighten($goldColor, 10%)
+  }
+ }
+}
+
 .matches {
   list-style-type: none;
   padding: 0;

@@ -35,6 +35,13 @@
   </div>
 </div>
 
+<!-- <div class="matchesFilter flex align-center">
+  Filtrer les matchs :
+  <button class="btn btnFilter" [ngClass]="{'active': filterAll} " (click)="filter('all')">Tous les matchs</button>
+  <button class="btn btnFilter" [ngClass]="{'active': filterAvailable }" (click)="filter('available')">Matchs disponible</button>
+  <button class="btn btnFilter" [ngClass]="{'active': filterFuture }" (click)="filter('future')">Matchs a venir</button>
+</div> -->
+
 <ul *ngIf="loaded" class="matches">
   <li *ngFor="let date of uniqueDates" class="days">
     <div class="days__header flex align-center"><span class="material-symbols-outlined">
@@ -59,23 +66,32 @@
 
         <!-- {{item.played}} -->
         <div class="teamA flex align-center">
+          <!-- <div *ngIf="item.hasPlayed && item.score_a > item.score_b" class="winA win">WIN</div> -->
           <img class="flags" src="https://infomil-wcc.github.io/faq/flags/{{item.team_a_img}}" alt="" />
-          <div class="teamName">{{item.team_a}}</div>
+          <div class="teamName">
+
+            {{item.team_a}}</div>
           <div class="score">{{item.score_a}}</div>
         </div>
 
-        <div class="vs">-</div>
+        <div class="vs">
+          <!-- <div *ngIf="item.hasPlayed && item.score_a == item.score_b" class="draw">DRAW</div> -->
+          -</div>
 
         <div class="teamB flex align-center">
+
           <div class="score">{{item.score_b}}</div>
-          <div class="teamName">{{item.team_b}}</div>
+          <div class="teamName">
+
+            {{item.team_b}}</div>
+            <!-- <div *ngIf="item.hasPlayed && item.score_a < item.score_b" class="winB win">WIN</div> -->
           <img class="flags" src="https://infomil-wcc.github.io/faq/flags/{{item.team_b_img}}" alt="" />
         </div>
 
         <!-- {{item.winDraw}} -->
 
         <div class="vote">
-          <button class="btnVote" *ngIf="item.activeToVote == 1 && item.score_a ==='' && item.score_b === '' && item.userPlayed == false" (click)="playGame(item)">
+          <button class="btnVote" *ngIf="!item.hasPlayed && item.userPlayed == false && item.activeToVote !== 0" (click)="playGame(item)">
             <ng-container>Pronostiquer</ng-container>
             <span class="material-symbols-outlined icn">
               arrow_forward_ios
@@ -90,18 +106,10 @@
             <ng-container>Vote déjà fait</ng-container>
           </button>
 
-          <button class="btnVote disabled" *ngIf="item.activeToVote == 0" (click)="showPopinTriche = true">
+          <button class="btnVote disabled" *ngIf="item.activeToVote == 0 && !item.hasPlayed" (click)="showPopinTriche = true">
             <ng-container>Vote non-ouvert</ng-container>
           </button>
 
-          <div class="result flex align-center" *ngIf="item.hasPlayed">
-            <ng-container *ngIf="item.score_a == item.score_b">
-              <span class="draw">Draw</span> Match Nul</ng-container>
-            <ng-container *ngIf="item.score_a > item.score_b">
-              <span class="win">Winner</span> {{ item.team_a}}</ng-container>
-            <ng-container *ngIf="item.score_a < item.score_b">
-              <span class="win">Winner</span> {{ item.team_b}}</ng-container>
-            </div>
         </div>
       </div>
     </ng-container>
