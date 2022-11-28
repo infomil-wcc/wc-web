@@ -2,11 +2,12 @@
 <app-top-header></app-top-header>
 <app-header *ngIf="page == 0"></app-header>
 
-<div class="container" [ngClass]="{'primaryBackground': page ==5 || page == 1, 'secondaryBackground': page == 4}" *ngIf="dataLoaded">
+<div class="container" [ngClass]="{'primaryBackground': page ==5 || page == 1 || page == 3, 'secondaryBackground': page == 4}" *ngIf="dataLoaded">
   <app-accueil *ngIf="page == 0"></app-accueil>
   <app-resultats-matchs *ngIf="page == 1" [matchesData]="matchesData" [dataLogin]="dataLogin"></app-resultats-matchs>
   <!-- <app-les-jeux *ngIf="page == 2" [dataLogin]="dataLogin" [matchesData]="matchesData"></app-les-jeux> -->
   <!-- <app-sondages *ngIf="page == 3"></app-sondages> -->
+  <app-bracket *ngIf="page == 3"></app-bracket>
   <app-classements *ngIf="page == 4"></app-classements>
   <app-regles-conditions *ngIf="page == 5"></app-regles-conditions>
 </div>

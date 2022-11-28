@@ -58,7 +58,7 @@ export class AppComponent implements OnInit{
       case 'les-jeux':
         this.page = 2;
         break;
-      case 'news':
+      case 'jeu-bracket':
         this.page = 3;
         break;
       case 'classements':

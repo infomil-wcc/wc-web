@@ -23,6 +23,7 @@ import { PreloaderComponent } from './components/preloader/preloader.component';
 import { RegisterComponent } from './components/register/register.component';
 import { HpNewsComponent } from './components/hp-news/hp-news.component';
 import { PopupTricheComponent } from './components/popup-triche/popup-triche.component';
+import { BracketComponent } from './pages/bracket/bracket.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { PopupTricheComponent } from './components/popup-triche/popup-triche.com
     PreloaderComponent,
     RegisterComponent,
     HpNewsComponent,
-    PopupTricheComponent
+    PopupTricheComponent,
+    BracketComponent,
   ],
   imports: [
     BrowserModule,
