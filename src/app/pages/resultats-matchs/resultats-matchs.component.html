@@ -42,6 +42,15 @@
   <button class="btn btnFilter" [ngClass]="{'active': filterFuture }" (click)="filter('future')">Matchs a venir</button>
 </div> -->
 
+<div class="flex justify-right topDiv">
+  <a href="#classements" class="linkRankings flex">
+    <span class="material-symbols-outlined">
+      workspace_premium
+      </span>
+
+    Consulter le classement</a>
+</div>
+
 <ul *ngIf="loaded" class="matches">
   <li *ngFor="let date of uniqueDates" class="days">
     <div class="days__header flex align-center"><span class="material-symbols-outlined">

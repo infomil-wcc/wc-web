@@ -114,7 +114,7 @@ button {
 }
 
 .justify-right {
-  justify-content: right;
+  justify-content: flex-end;
 }
 
 .flags {
@@ -410,4 +410,27 @@ input[type=number]::-webkit-outer-spin-button {
   100% {
     transform: rotate(360deg);
   }
+}
+
+.linkRankings {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  margin-top: 1rem;
+  align-items: center;
+
+  & > span {
+    color: $goldColor;
+    margin-right: 0.5rem;
+  }
+
+  &:hover {
+    color: $goldColor;
+  }
+
+}
+
+.topDiv {
+  max-width: 860px;
+  margin: 0 auto;
 }
