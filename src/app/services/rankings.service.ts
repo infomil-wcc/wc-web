@@ -11,6 +11,6 @@ export class RankingsService {
   constructor(private http: HttpClient) { }
 
   get ranks(){
-    return this.http.get(`https://script.google.com/macros/s/AKfycbzAOHF_DLP0_a-A_wgKAEaJluIviXiY36qOI_OBANmpkZuCf875hh0BHT_PuT11SEu1Ig/exec`);
+    return this.http.get(`https://script.google.com/macros/s/AKfycbzun78aOgIdSxr9yIFcq4rLubFO9dxofikEpaCJKwRkLmdvluuaFyhCziLe9Yi0Fvcd/exec`);
   }
 }
