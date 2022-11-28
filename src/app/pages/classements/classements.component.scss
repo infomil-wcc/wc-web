@@ -1,0 +1,61 @@
+@import "../../../variables.scss";
+
+.classements {
+  margin-top: 2rem;
+
+  &__legend {
+    padding: 15px 10px;
+    color: white;
+    background: #222;
+    position: sticky;
+    top: 0;
+
+    & > div {
+      text-align: center;
+    }
+
+    .points {
+      padding-right: 18px;
+    }
+  }
+
+  &__items {
+    overflow: hidden;
+    height: calc(85vh - 6rem);
+    overflow-y: scroll;
+  }
+
+  &__item {
+    padding: 20px 10px;
+    background: white;
+    color: black;
+    border-bottom: 1px solid #aaaaaa;
+
+    &:nth-child(even) {
+      background: #efefef;
+    }
+
+    & > div {
+      text-align: center;
+    }
+  }
+
+  .rank {
+    width: 10%;
+    flex-shrink: 0;
+  }
+
+  .trigramme {
+    width: 20%;
+    flex-shrink: 0;
+  }
+
+  .name {
+    width: 50%;
+  }
+
+  .points {
+    width: 20%;
+    flex-shrink: 0;
+  }
+}

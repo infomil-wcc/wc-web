@@ -1,5 +1,22 @@
-<p>Les classements arrivent bientot!</p>
-<app-preloader *ngIf="showPreloader"></app-preloader>
-<div class="classements">
+<!-- <p>Les classements arrivent bientot!</p> -->
+<app-preloader *ngIf="showPreloader" [showCalcs]="true"></app-preloader>
 
+<div class="classements">
+    <div class="classements__legend flex">
+      <div class="rank">Rang</div>
+      <div class="trigramme">Trigramme</div>
+      <div class="name"> Nom</div>
+      <div class="points">Points</div>
+    </div>
+
+    <ng-container *ngIf="!showPreloader">
+      <div class="classements__items">
+        <div class="classements__item flex" *ngFor="let item of rankingsData;">
+          <div class="rank"> {{ item.rang }}</div>
+          <div class="trigramme"> {{ item.trigramme}}</div>
+          <div class="name"> {{item.nom}}</div>
+          <div class="points"><strong> {{ item.score }} pts </strong></div>
+        </div>
+      </div>
+    </ng-container>
 </div>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { RankingsService} from './../../services/rankings.service'
 
 @Component({
   selector: 'app-classements',
@@ -7,11 +8,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ClassementsComponent implements OnInit {
 
-  constructor() { }
+  constructor( private rankingService: RankingsService) { }
 
-  public showPreloader = !true;
+  public showPreloader = true;
+  public rankingsData: any = [];
 
   ngOnInit(): void {
+    this.getRanks();
+  }
+
+  getRanks(){
+    this.rankingService.ranks.subscribe((res: any)=> {
+      this.rankingsData = res.data;
+      this.showPreloader = false;
+      // console.log(this.rankingsData);
+    })
   }
 
 }
