@@ -201,7 +201,7 @@ div.input {
     color: darken($secondaryColor, 30%)
   }
 
-  &.disabled {
+  &.disabled,&[disabled] {
     pointer-events: none;
     background: lightgray;
     color: darkgray;

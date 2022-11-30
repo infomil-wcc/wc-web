@@ -7,7 +7,7 @@
   <app-resultats-matchs *ngIf="page == 1" [matchesData]="matchesData" [dataLogin]="dataLogin"></app-resultats-matchs>
   <!-- <app-les-jeux *ngIf="page == 2" [dataLogin]="dataLogin" [matchesData]="matchesData"></app-les-jeux> -->
   <!-- <app-sondages *ngIf="page == 3"></app-sondages> -->
-  <app-bracket *ngIf="page == 3"></app-bracket>
+  <app-bracket *ngIf="page == 3" [matchesData]="matchesData"></app-bracket>
   <app-classements *ngIf="page == 4"></app-classements>
   <app-regles-conditions *ngIf="page == 5"></app-regles-conditions>
 </div>
