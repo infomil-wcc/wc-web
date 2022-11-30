@@ -1,18 +1,20 @@
 <div class="bracket">
 
   <div class="phases">
+    <!--- Phase R16 starts here-->
     <div class="phase phaseR16" [ngClass]="{'active' : currentPhase == 0}">
-      <h2>Phase de groupe <span class="group R16">R16</span></h2>
+      <h2>Huitièmes de finales <span class="group R16">R16</span></h2>
 
       <div *ngFor="let item of r16Dates" class="groupedHorizontal flex justify-evenly">
 
         <ng-container *ngFor="let matches of r16Data">
           <div class="grouped flex justify-evenly align-center" *ngIf="matches.date == item">
-            <h3>Match {{ matches.id }}</h3>
+            <h3>Match {{ matches.id }} - {{matches.date}}</h3>
 
             <div class="teamA team">
               <label>
-                <input type="radio" value="{{ matches.team_a }}" name="match-{{matches.id}}" (input)="selectedR16($event, matches.team_a)" />
+                <input type="radio" value="{{ matches.team_a }}" name="match-{{matches.id}}"
+                  (input)="selectedR16($event, matches.team_a, matches.id)" />
                 <img src="https://infomil-wcc.github.io/faq/flags/{{matches.team_a | lowercase }}.png" alt="" />
                 <span class="selected material-symbols-outlined"> done </span>
                 <div class="txt">{{ matches.team_a }}</div>
@@ -23,7 +25,8 @@
 
             <div class="teamB team">
               <label>
-                <input type="radio" value="{{ matches.team_b }}" name="match-{{matches.id}}" (input)="selectedR16($event, matches.team_b)" />
+                <input type="radio" value="{{ matches.team_b }}" name="match-{{matches.id}}"
+                  (input)="selectedR16($event, matches.team_b,  matches.id)" />
                 <img src="https://infomil-wcc.github.io/faq/flags/{{matches.team_b | lowercase }}.png" alt="" />
                 <span class="selected material-symbols-outlined"> done </span>
                 <div class="txt">{{ matches.team_b }}</div>
@@ -35,31 +38,218 @@
       </div>
 
     </div>
+    <!--- Phase R16 ends here-->
 
-    <div class="phase phaseQT"[ngClass]="{'active' : currentPhase == 1}">
+    <!--- Phase Quarter starts here-->
+    <div class="phase phaseQT" [ngClass]="{'active' : currentPhase == 1}">
       <h2>Quart de final <span class="group QF">QF</span></h2>
-    </div>
 
+      <div class="groupedHorizontal flex justify-evenly">
+        <div class="grouped flex justify-evenly align-center">
+          <h3>Match 57 - 09/12/2022 19:00</h3>
+
+          <div class="teamA team">
+            <label>
+              <input type="radio" value="{{ quart1A }}" name="match-57"
+                (input)="selectedQuarter($event, quart1A , 57)" />
+              <img src="https://infomil-wcc.github.io/faq/flags/{{ quart1A | lowercase }}.png" alt="" />
+              <span class="selected material-symbols-outlined"> done </span>
+              <div class="txt">{{ quart1A }}</div>
+            </label>
+          </div>
+
+          <div class="vs">vs</div>
+
+          <div class="teamB team">
+            <label>
+              <input type="radio" value="{{ quart1B }}" name="match-57"
+                (input)="selectedQuarter($event, quart1B, 57)" />
+              <img src="https://infomil-wcc.github.io/faq/flags/{{ quart1B | lowercase }}.png" alt="" />
+              <span class="selected material-symbols-outlined"> done </span>
+              <div class="txt">{{ quart1B }}</div>
+            </label>
+          </div>
+
+        </div>
+
+        <div class="grouped flex justify-evenly align-center">
+          <h3>Match 58 - 09/12/2022 23:00</h3>
+
+          <div class="teamA team">
+            <label>
+              <input type="radio" value="{{ quart2A }}" name="match-58"
+                (input)="selectedQuarter($event, quart2A , 58)" />
+              <img src="https://infomil-wcc.github.io/faq/flags/{{ quart2A | lowercase }}.png" alt="" />
+              <span class="selected material-symbols-outlined"> done </span>
+              <div class="txt">{{ quart2A }}</div>
+            </label>
+          </div>
+
+          <div class="vs">vs</div>
+
+          <div class="teamB team">
+            <label>
+              <input type="radio" value="{{ quart2B }}" name="match-58"
+                (input)="selectedQuarter($event, quart2B, 58)" />
+              <img src="https://infomil-wcc.github.io/faq/flags/{{ quart2B | lowercase }}.png" alt="" />
+              <span class="selected material-symbols-outlined"> done </span>
+              <div class="txt">{{ quart2B }}</div>
+            </label>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="groupedHorizontal flex justify-evenly">
+        <div class="grouped flex justify-evenly align-center">
+          <h3>Match 59 - 10/12/2022 19:00</h3>
+
+          <div class="teamA team">
+            <label>
+              <input type="radio" value="{{ quart3A }}" name="match-59"
+                (input)="selectedQuarter($event, quart3A , 59)" />
+              <img src="https://infomil-wcc.github.io/faq/flags/{{ quart3A | lowercase }}.png" alt="" />
+              <span class="selected material-symbols-outlined"> done </span>
+              <div class="txt">{{ quart3A }}</div>
+            </label>
+          </div>
+
+          <div class="vs">vs</div>
+
+          <div class="teamB team">
+            <label>
+              <input type="radio" value="{{ quart3B }}" name="match-59"
+                (input)="selectedQuarter($event, quart3B, 59)" />
+              <img src="https://infomil-wcc.github.io/faq/flags/{{ quart3B | lowercase }}.png" alt="" />
+              <span class="selected material-symbols-outlined"> done </span>
+              <div class="txt">{{ quart3B }}</div>
+            </label>
+          </div>
+
+        </div>
+
+        <div class="grouped flex justify-evenly align-center">
+          <h3>Match 60  - 10/12/2022 23:00</h3>
+
+          <div class="teamA team">
+            <label>
+              <input type="radio" value="{{ quart4A }}" name="match-60"
+                (input)="selectedQuarter($event, quart4A , 60)" />
+              <img src="https://infomil-wcc.github.io/faq/flags/{{ quart4A | lowercase }}.png" alt="" />
+              <span class="selected material-symbols-outlined"> done </span>
+              <div class="txt">{{ quart4A }}</div>
+            </label>
+          </div>
+
+          <div class="vs">vs</div>
+
+          <div class="teamB team">
+            <label>
+              <input type="radio" value="{{ quart4B }}" name="match-60"
+                (input)="selectedQuarter($event, quart4B, 60)" />
+              <img src="https://infomil-wcc.github.io/faq/flags/{{ quart4B | lowercase }}.png" alt="" />
+              <span class="selected material-symbols-outlined"> done </span>
+              <div class="txt">{{ quart4B }}</div>
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--- Phase Quarter ends here-->
+
+    <!--- Phase Semi starts here-->
     <div class="phase phaseSF" [ngClass]="{'active' : currentPhase == 2}">
       <h2>Semi final <span class="group SF">SF</span></h2>
+
+      <div class="groupedHorizontal flex justify-evenly">
+        <div class="grouped flex justify-evenly align-center">
+          <h3>Match 61 - 13/12/2022 23:00</h3>
+
+          <div class="teamA team">
+            <label>
+              <input type="radio" value="{{ semi1A }}" name="match-61"
+                (input)="selectedSemi($event, semi1A, semi1B, 61)" />
+              <img src="https://infomil-wcc.github.io/faq/flags/{{ semi1A | lowercase }}.png" alt="" />
+              <span class="selected material-symbols-outlined"> done </span>
+              <div class="txt">{{ semi1A }}</div>
+            </label>
+          </div>
+
+          <div class="vs">vs</div>
+
+          <div class="teamB team">
+            <label>
+              <input type="radio" value="{{ semi1B }}" name="match-61"
+                (input)="selectedSemi($event, semi1B, semi1A, 61)" />
+              <img src="https://infomil-wcc.github.io/faq/flags/{{ semi1B | lowercase }}.png" alt="" />
+              <span class="selected material-symbols-outlined"> done </span>
+              <div class="txt">{{ semi1B }}</div>
+            </label>
+          </div>
+
+        </div>
+
+        <div class="grouped flex justify-evenly align-center">
+          <h3>Match 62 - 13/12/2022 23:00</h3>
+
+          <div class="teamA team">
+            <label>
+              <input type="radio" value="{{ semi2A }}" name="match-62"
+                (input)="selectedSemi($event, semi2A, semi2B, 62)" />
+              <img src="https://infomil-wcc.github.io/faq/flags/{{ semi2A | lowercase }}.png" alt="" />
+              <span class="selected material-symbols-outlined"> done </span>
+              <div class="txt">{{ semi2A }}</div>
+            </label>
+          </div>
+
+          <div class="vs">vs</div>
+
+          <div class="teamB team">
+            <label>
+              <input type="radio" value="{{ semi2B }}" name="match-62"
+                (input)="selectedSemi($event, semi2B, semi2A, 62)" />
+              <img src="https://infomil-wcc.github.io/faq/flags/{{ semi2B | lowercase }}.png" alt="" />
+              <span class="selected material-symbols-outlined"> done </span>
+              <div class="txt">{{ semi2B }}</div>
+            </label>
+          </div>
+
+        </div>
+      </div>
+
+
     </div>
+    <!--- Phase Semi ends here-->
 
     <div class="phase phaseTP" [ngClass]="{'active' : currentPhase == 3}">
       <h2>Troisième place <span class="group TP">TP</span></h2>
+
+
     </div>
 
     <div class="phase phaseF" [ngClass]="{'active' : currentPhase == 4}">
       <h2>Final World Cup <span class="group WCF">WCF</span></h2>
+
+
     </div>
   </div>
 
-  <div class="bracket__nav flex justify-between">
+  <div class="bracket__nav flex justify-between align-center">
+
     <button class="btn btnPrev" [disabled]="!prevActive" (click)="navClicked(false)"
       *ngIf="currentPhase > 0">Précédent</button>
-    <button class="btn btnSuiv" [disabled]="finishActive" (click)="navClicked(true)"
-      *ngIf="currentPhase !== 4">Suivant</button>
-    <button class="btn btnTerminer" [disabled]="finishActive" *ngIf="currentPhase == 4"
-      (click)="validateBracket()">Terminé</button>
+
+    <p [ngClass]="{'marginLeft': currentPhase !== 0 }">Pronostiquer tous les matchs pour passer à l'étape suivante</p>
+
+    <button class="btn btnSuiv" [disabled]="!r16Voted" (click)="navClicked(true)" *ngIf="currentPhase == 0">Suivant</button>
+
+    <button class="btn btnSuiv" [disabled]="!quarterVoted" (click)="navClicked(true)" *ngIf="currentPhase == 1">Suivant</button>
+
+    <button class="btn btnSuiv" [disabled]="!semiVoted" (click)="navClicked(true)" *ngIf="currentPhase == 2">Suivant</button>
+
+    <button class="btn btnSuiv" [disabled]="!thirdVoted" (click)="navClicked(true)" *ngIf="currentPhase == 3">Suivant</button>
+
+    <button class="btn btnTerminer" [disabled]="finishActive" *ngIf="currentPhase == 4" (click)="validateBracket()">Valider</button>
   </div>
 
 </div>

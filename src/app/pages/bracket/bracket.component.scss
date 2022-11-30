@@ -18,12 +18,12 @@
   &__nav {
     width: 100%;
     padding: 1rem 0 0;
-    border-top: 1px solid rgba(255,255,255,0.5);
+    // border-top: 1px solid rgba(255,255,255,0.5);
   }
 
-  .phases {
-    margin-bottom: 4rem;
-  }
+  // .phases {
+  //   margin-bottom: 4rem;
+  // }
 
   .btnSuiv {
     margin-left: auto;
@@ -32,6 +32,7 @@
   .grouped {
     flex-wrap: wrap;
     justify-content: center;
+    max-width: 340px;
 
     h3  {
       width: 100%;
@@ -89,12 +90,14 @@
 
     .txt {
       text-align: center;
+      margin-bottom: 1rem;
     }
 
   }
 
   .groupedHorizontal {
     flex-wrap: wrap;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
   }
 }
 
@@ -124,6 +127,10 @@ h2 {
     margin-left: 10px;
     width: fit-content;
   }
+}
+
+p.marginLeft {
+  margin-left: auto;
 }
 
 @media screen and (max-width: 990px){
