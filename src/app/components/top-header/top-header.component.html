@@ -3,15 +3,22 @@
     <img src="https://infomil-wcc.github.io/faq/logo.gif" alt="" class="logo" height="60px" />
   </div>
 
-  <button class="connect flex align-center" (click)="showLogin = true">
+  <button class="connect flex align-center" (click)="showLogin = true" *ngIf="!connected">
     Se connecter
     <span class="material-symbols-outlined">
       account_circle
       </span>
   </button>
+
+  <button class="disconnect flex align-center" (click)="disconnect()" *ngIf="connected">
+    Se déconnecter
+    <span class="material-symbols-outlined">
+      logout
+      </span>
+  </button>
   <app-navigation></app-navigation>
 </div>
 
-
+<app-preloader *ngIf="showLoader"></app-preloader>
 <app-login (successLogin)="successLogin($event)" [(showLogin)]="showLogin" *ngIf="showLogin" (showReg)="hideRegister($event)"></app-login>
 <app-register *ngIf="showRegister" (hideregister)="hideRegister($event)"></app-register>

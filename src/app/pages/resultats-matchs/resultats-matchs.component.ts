@@ -27,9 +27,12 @@ export class ResultatsMatchsComponent implements OnInit {
   public currentGameId!: any;
   public showRegister: boolean = false;
   public showPopinTriche: boolean = false;
+
   public filterAvailable: boolean = false;
   public filterFuture: boolean = false;
   public filterAll: boolean = true;
+
+  public today: Date = new Date();
 
   @Input() dataLogin!: Object;
   @Input() matchesData: any;
@@ -161,7 +164,7 @@ export class ResultatsMatchsComponent implements OnInit {
   getUniqueDates(data: any){
     let dateKeys: any = [];
 
-    data.forEach((element: { date: any; }) => {
+    data.forEach((element: { date: string }) => {
       dateKeys.push(this.parseMyDate(element.date));
     });
 
@@ -215,5 +218,17 @@ export class ResultatsMatchsComponent implements OnInit {
 
     // console.log('showRegister', this.showRegister);
   }
+
+  compareDates(date1: any, date2: any) {
+    let myDate = new Date();
+    let tomorow = new Date(myDate);
+    tomorow.setDate(myDate.getDate() - 1);
+    if(Date.parse(date1) < Date.parse(tomorow.toString()) ) {
+      return true
+    }  else {
+      return false;
+    }
+  }
+
 }
 
