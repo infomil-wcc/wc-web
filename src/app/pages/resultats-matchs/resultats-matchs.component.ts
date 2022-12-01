@@ -69,7 +69,7 @@ export class ResultatsMatchsComponent implements OnInit {
     let dataLength = this.matchesData.data.length;
     let count = 0;
 
-    console.log(this.matchesData);
+    // console.log(this.matchesData);
 
     this.matchesData.data.forEach((elem: any) => {
 
@@ -108,7 +108,7 @@ export class ResultatsMatchsComponent implements OnInit {
 
       if(count == dataLength){
         this.loaded = true;
-        console.log(this.match);
+        // console.log(this.match);
       }
 
 

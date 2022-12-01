@@ -52,7 +52,7 @@ export class BracketComponent implements OnInit {
   ngOnInit(): void {
     let itemCount = 0;
     let itemLength = this.matchesData.data.length;
-    console.log(this.matchesData.data);
+    // console.log(this.matchesData.data);
 
     this.matchesData.data.forEach((element: { group: string; }) => {
       itemCount = itemCount + 1;
@@ -86,8 +86,8 @@ export class BracketComponent implements OnInit {
 
   // NAVIGATION
   navClicked(next: boolean){
-    console.log('nav clicked, next ->', next);
-    console.log('current nav is ->', this.currentPhase);
+    // console.log('nav clicked, next ->', next);
+    // console.log('current nav is ->', this.currentPhase);
 
     if(next && this.currentPhase < 5 ){
       this.currentPhase = this.currentPhase + 1;
@@ -251,7 +251,7 @@ export class BracketComponent implements OnInit {
   }
 
   validateBracket(){
-    console.log('validate bracket');
+    // console.log('validate bracket');
   }
 
 

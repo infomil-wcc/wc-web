@@ -93,18 +93,35 @@ export class MatchVoteComponent implements OnInit {
 
   validateVote(){
 
+    let fullScoreA = '';
+    let fullScoreB = '';
+    let halfScoreA = '';
+    let haflScoreB = '';
+    let scorer = '';
+    let scoringFirst = '';
+
     switch (this.element.group) {
       case 'WCF':
         this.builtUrl = this.buildURL('WCF', {'trigramme': this.trigramme, 'winDraw': this.winDrawSelection, 'halfTimeA': this.halfTimeA.nativeElement.value, 'halfTimeB': this.halfTimeB.nativeElement.value, 'fullTimeA': this.fullTimeA.nativeElement.value, 'fullTimeB': this.fullTimeB.nativeElement.value, 'firstScoring': this.firstScoring, 'scorer': this.scorerName.nativeElement.value});
+        fullScoreA = this.fullTimeA.nativeElement.value;
+        fullScoreB = this.fullTimeB.nativeElement.value;
+        scorer = this.scorerName.nativeElement.value;
+        scoringFirst = this.firstScoring;
         break;
 
       case 'SF':
       case 'QF':
         this.builtUrl = this.buildURL('SF', {'trigramme': this.trigramme, 'winDraw': this.winDrawSelection, 'fullTimeA': this.fullTimeA.nativeElement.value, 'fullTimeB': this.fullTimeB.nativeElement.value, 'scorer': this.scorerName.nativeElement.value});
+        fullScoreA = this.fullTimeA.nativeElement.value;
+        fullScoreB = this.fullTimeB.nativeElement.value;
+        scorer = this.scorerName.nativeElement.value;
       break
 
       case 'R16':
-        this.builtUrl = this.buildURL('SF', {'trigramme': this.trigramme, 'winDraw': this.winDrawSelection, 'fullTimeA': this.fullTimeA.nativeElement.value, 'fullTimeB': this.fullTimeB.nativeElement.value});
+        this.builtUrl = this.buildURL('R16', {'trigramme': this.trigramme, 'winDraw': this.winDrawSelection, 'fullTimeA': this.fullTimeA.nativeElement.value, 'fullTimeB': this.fullTimeB.nativeElement.value});
+        fullScoreA = this.fullTimeA.nativeElement.value;
+        fullScoreB = this.fullTimeB.nativeElement.value;
+        // console.log('Built-URL:', this.builtUrl);
         break;
 
       default:
@@ -112,26 +129,33 @@ export class MatchVoteComponent implements OnInit {
         break;
     }
 
-    // console.log('Built URL =>', this.builtUrl);
-    // this.matchService.updateMatchVote(this.element.gameId.toString(), this.trigramme, this.pass.nativeElement.value).subscribe((res)=>{
-    //   console.log('update match done ->', res);
-
-    //   setTimeout(() => {
-    //     // this.gamePlayed.emit(true);
-
-    //     setTimeout(() => {
-    //       // this.closeGame();
-    //     }, 500);
-    //   }, 1000);
-
-    // })
-
-    this.updateViaFetch(this.element.gameId.toString(), this.trigramme, );
+    this.updateViaFetch(this.element.gameId.toString(), this.trigramme, this.element.group, fullScoreA, fullScoreB, halfScoreA, haflScoreB, scorer, scoringFirst);
   }
 
-  updateViaFetch(gameId: any, trigramme:any){
+  updateViaFetch(gameId: any, trigramme:any, groupType: any, fullscoreA: any, fullScoreB: any, halfScoreA: any, haflScoreB: any, scorer: string, scoringFirst: any){
+
     var myHeaders = new Headers();
     myHeaders.append("Cookie", "NID=511=Nc0Y8lxUOEJeaBaWHAL0xo-voSQ70jY4d-6XV3V41eHiD_qE287CeQd-yRqo5_L-Z5ATjr90knjuOsadRZFGd5XRXouvm2DV7lsWFaY3sPhcsXfC4LYj7ainarTXz924baq-zwtKxL4oP8PT9XP6IBIcUdCOyVTtAesFdob1NVM");
+
+    let additionalParams = '';
+
+    switch (groupType) {
+      case 'WCF':
+        additionalParams = `&scoreA=${fullscoreA}&scoreB=${fullScoreB}&scorer=${scorer}&halfA=${halfScoreA}&halfB=${haflScoreB}`;
+      break;
+
+      case 'SF':
+      case 'QF':
+        additionalParams = `&scoreA=${fullscoreA}&scoreB=${fullScoreB}&scorer=${scorer}`;
+      break;
+
+      case 'R16':
+        additionalParams = `&scoreA=${fullscoreA}&scoreB=${fullScoreB}`;
+      break;
+
+      default:
+        break;
+    }
 
     let requestOptions = {
       method: 'GET',
@@ -139,7 +163,8 @@ export class MatchVoteComponent implements OnInit {
       redirect: 'follow'
     } as any;
 
-    fetch(`https://script.google.com/macros/s/AKfycbzun78aOgIdSxr9yIFcq4rLubFO9dxofikEpaCJKwRkLmdvluuaFyhCziLe9Yi0Fvcd/exec?user=${trigramme}&matchId=${gameId}&vote=${this.voteId}`, requestOptions)
+    // scoreA, scoreB
+    fetch(`https://script.google.com/macros/s/AKfycbzun78aOgIdSxr9yIFcq4rLubFO9dxofikEpaCJKwRkLmdvluuaFyhCziLe9Yi0Fvcd/exec?user=${trigramme}&matchId=${gameId}&vote=${this.voteId}${additionalParams}`, requestOptions)
       .then((response) => {
         response.text()
       })
@@ -160,7 +185,6 @@ export class MatchVoteComponent implements OnInit {
 
 
   buildURL(type: string, data: any): string {
-    // console.log('build URL', type, data);
     switch (type) {
       case 'WCF':
         return `${this.voteUrl}${this.element.eTrigramme}=${data.trigramme}&${this.element.eWinDraw}=${data.winDraw}&${this.element.eHalfScoreA}=${data.halfTimeA}&${this.element.eHalfScoreB}=${data.halfTimeB}&${this.element.eFullScoreA}=${data.fullTimeA}&${this.element.eFullScoreB}=${data.fullTimeB}&${this.element.eFirstGoal}=${data.firstScoring}&${this.element.eScorer}=${data.scorer}`;
@@ -173,12 +197,13 @@ export class MatchVoteComponent implements OnInit {
 
       case 'R16':
         return `${this.voteUrl}${this.element.eTrigramme}=${data.trigramme}&${this.element.eWinDraw}=${data.winDraw}&${this.element.eFullScoreA}=${data.fullTimeA}&${this.element.eFullScoreB}=${data.fullTimeB}`;
-      break;
+        break;
 
       default:
         return `${this.voteUrl}${this.element.eTrigramme}=${data.trigramme}&${this.element.eWinDraw}=${data.winDraw}`;
       break;
     }
+
   }
 
   resetAccount(){

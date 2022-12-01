@@ -100,12 +100,20 @@
         <!-- {{item.winDraw}} -->
 
         <div class="vote">
-          <button class="btnVote" *ngIf="item.group !== 'R16' && item.actived == 1 && item.userPlayed == '' && item.voteEstOuvert" (click)="playGame(item)">
+          <button class="btnVote" *ngIf="item.actived == 1 && item.userPlayed == '' && item.voteEstOuvert" (click)="playGame(item)">
             <ng-container>Pronostiquer</ng-container>
             <span class="material-symbols-outlined icn">
               arrow_forward_ios
               </span>
           </button>
+
+          <!-- Debugger button -->
+          <!-- <button class="btnVote" (click)="playGame(item)">
+            <ng-container>Dg Pronostiquer</ng-container>
+            <span class="material-symbols-outlined icn">
+              arrow_forward_ios
+              </span>
+          </button> -->
 
           <!-- <button class="btnVote disabled" *ngIf="!item.hasPlayed && item.activeToVote == 0 && item.userPlayed !== ''" (click)="showPopinTriche = true">
             <ng-container>Vote Fermer</ng-container>
