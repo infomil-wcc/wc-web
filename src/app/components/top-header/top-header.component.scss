@@ -31,9 +31,11 @@
 
 .connect {
   margin-left: auto;
+  color: $goldColor;
 
   span {
     color: $goldColor;
+    margin-left: 10px;
   }
 }
 

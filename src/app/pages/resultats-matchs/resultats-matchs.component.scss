@@ -1,13 +1,26 @@
 @import "../../../variables.scss";
 
+.topDiv {
+  position: fixed;
+  width: 100%;
+  max-width: initial;
+  padding: 0 2rem 1rem;
+  left: 0;
+  top: 80px;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.5) 25%, rgba(0, 0, 0, 0.8) 100%);
+  z-index: 100;
+}
+
 .matchesFilter {
- padding: 2rem;
+//  padding: 2rem;
  justify-content: flex-end;
+ margin-right: auto;
+ margin-top: 14px;
 
  .btnFilter {
   width: fit-content;
   padding: 5px 15px;
-  font-size: 12px;
+  font-size: 10px;
   border-radius: 20px;
   margin: 0 10px;
   background: $goldColor;
@@ -21,7 +34,7 @@
 .matches {
   list-style-type: none;
   padding: 0;
-  margin: 2rem auto 0;
+  margin: 4rem auto 2rem;
   max-width: 860px;
 
   .days {
