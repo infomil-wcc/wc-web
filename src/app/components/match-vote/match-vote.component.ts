@@ -154,6 +154,7 @@ export class MatchVoteComponent implements OnInit {
       break;
 
       default:
+
         break;
     }
 
@@ -170,7 +171,7 @@ export class MatchVoteComponent implements OnInit {
       })
       .then((result) => {
         // console.log(result)
-           setTimeout(() => {
+        setTimeout(() => {
           this.gamePlayed.emit(true);
 
           setTimeout(() => {
@@ -179,7 +180,14 @@ export class MatchVoteComponent implements OnInit {
         }, 800);
       })
       .catch((error)=> {
-        // console.log('error', error)
+        //  console.log('error', error);
+         setTimeout(() => {
+          this.gamePlayed.emit(true);
+
+          setTimeout(() => {
+            this.closeGame();
+          }, 1000);
+        }, 800);
       });
   }
 
