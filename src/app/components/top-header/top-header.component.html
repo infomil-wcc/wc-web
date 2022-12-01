@@ -2,5 +2,15 @@
   <div class="flex align-center">
     <img src="https://infomil-wcc.github.io/faq/logo.gif" alt="" class="logo" height="60px" />
   </div>
+
+  <button class="connect" (click)="showLogin = true">
+    <span class="material-symbols-outlined">
+      account_circle
+      </span>
+  </button>
   <app-navigation></app-navigation>
 </div>
+
+
+<app-login (successLogin)="successLogin($event)" [(showLogin)]="showLogin" *ngIf="showLogin" (showReg)="hideRegister($event)"></app-login>
+<app-register *ngIf="showRegister" (hideregister)="hideRegister($event)"></app-register>

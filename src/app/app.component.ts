@@ -13,9 +13,10 @@ export class AppComponent implements OnInit{
   public title = 'infomil-worldcup';
   public page = 0;
   public dataLoaded: boolean = false;
-
+  public showLogin: boolean = false;
   public dataLogin: Object =[];
   public matchesData: Object =[];
+  public showRegister: boolean = false;
 
 
   constructor(private route: ActivatedRoute, private router: Router, private loginService: LoginService, private matchesService: MatchResultsService){
@@ -77,4 +78,6 @@ export class AppComponent implements OnInit{
   ngOnInit():void {
 
   }
+
+
 }

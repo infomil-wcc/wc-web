@@ -8,8 +8,18 @@ import { Component, OnInit } from '@angular/core';
 export class TopHeaderComponent implements OnInit {
 
   constructor() { }
+  public showRegister: boolean = false;
+  public showLogin: boolean = false;
+  public dataLogin: Object =[];
 
   ngOnInit(): void {
   }
 
+  successLogin(event: any){
+    window.location.reload();
+  }
+
+  hideRegister(event: any){
+    this.showRegister = !this.showRegister;
+  }
 }
