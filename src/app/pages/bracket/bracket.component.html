@@ -224,12 +224,69 @@
     <div class="phase phaseTP" [ngClass]="{'active' : currentPhase == 3}">
       <h2>Troisième place <span class="group TP">TP</span></h2>
 
+      <div class="groupedHorizontal flex justify-evenly">
 
+        <div class="grouped flex justify-evenly align-center">
+          <h3>Match 63 - 17/12/2022 19:00</h3>
+
+          <div class="teamA team">
+            <label>
+              <input type="radio" value="{{ third1A }}" name="match-63"
+                (input)="selectedThird($event, third1A)" />
+              <img src="https://infomil-wcc.github.io/faq/flags/{{ third1A | lowercase }}.png" alt="" />
+              <span class="selected material-symbols-outlined"> done </span>
+              <div class="txt">{{ third1A }}</div>
+            </label>
+          </div>
+
+          <div class="vs">vs</div>
+
+          <div class="teamB team">
+            <label>
+              <input type="radio" value="{{ third1B }}" name="match-63"
+                (input)="selectedThird($event, third1B)" />
+              <img src="https://infomil-wcc.github.io/faq/flags/{{ third1B | lowercase }}.png" alt="" />
+              <span class="selected material-symbols-outlined"> done </span>
+              <div class="txt">{{ third1B }}</div>
+            </label>
+          </div>
+
+        </div>
+      </div>
     </div>
 
     <div class="phase phaseF" [ngClass]="{'active' : currentPhase == 4}">
-      <h2>Final World Cup <span class="group WCF">WCF</span></h2>
+      <h2>Finale Coupe du Monde <span class="group WCF">WCF</span></h2>
 
+      <div class="groupedHorizontal flex justify-evenly">
+
+        <div class="grouped flex justify-evenly align-center">
+          <h3>Match 64 - 18/12/2022 19:00</h3>
+
+          <div class="teamA team">
+            <label>
+              <input type="radio" value="{{ final1A }}" name="match-64"
+                (input)="selectedFinal($event, final1A)" />
+              <img src="https://infomil-wcc.github.io/faq/flags/{{ final1A | lowercase }}.png" alt="" />
+              <span class="selected material-symbols-outlined"> done </span>
+              <div class="txt">{{ final1A }}</div>
+            </label>
+          </div>
+
+          <div class="vs">vs</div>
+
+          <div class="teamB team">
+            <label>
+              <input type="radio" value="{{ final1B }}" name="match-64"
+                (input)="selectedFinal($event, final1B)" />
+              <img src="https://infomil-wcc.github.io/faq/flags/{{ final1B | lowercase }}.png" alt="" />
+              <span class="selected material-symbols-outlined"> done </span>
+              <div class="txt">{{ final1B }}</div>
+            </label>
+          </div>
+
+        </div>
+      </div>
 
     </div>
   </div>

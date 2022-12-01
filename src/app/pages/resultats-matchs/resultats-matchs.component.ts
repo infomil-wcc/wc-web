@@ -69,7 +69,7 @@ export class ResultatsMatchsComponent implements OnInit {
     let dataLength = this.matchesData.data.length;
     let count = 0;
 
-    // console.log(this.matchesData);
+    console.log(this.matchesData);
 
     this.matchesData.data.forEach((elem: any) => {
 
@@ -99,16 +99,19 @@ export class ResultatsMatchsComponent implements OnInit {
         "eScorer": elem.eScorer,
         "eTrigramme": elem.eTrigramme,
         "eWinDraw": elem.eWinDraw,
-        "userPlayed": (type == 'all') ? '' : this.checkPlayedMatches(elem.id)
+        "userPlayed": (type == 'all') ? '' : this.checkPlayedMatches(elem.id),
+        "actived": elem.actived,
+        "voteEstOuvert": elem.voteEstOuvert
       }
 
       this.match.push(res);
 
       if(count == dataLength){
         this.loaded = true;
+        console.log(this.match);
       }
 
-      // console.log(this.match)
+
   })
   }
 

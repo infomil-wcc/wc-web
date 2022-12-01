@@ -100,7 +100,7 @@
         <!-- {{item.winDraw}} -->
 
         <div class="vote">
-          <button class="btnVote" *ngIf="!item.hasPlayed && item.userPlayed == '' && item.activeToVote !== 0" (click)="playGame(item)">
+          <button class="btnVote" *ngIf="item.group !== 'R16' && item.actived == 1 && item.userPlayed == '' && item.voteEstOuvert" (click)="playGame(item)">
             <ng-container>Pronostiquer</ng-container>
             <span class="material-symbols-outlined icn">
               arrow_forward_ios
