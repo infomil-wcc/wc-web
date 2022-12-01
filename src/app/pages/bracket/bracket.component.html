@@ -1,3 +1,5 @@
+<iframe name="hiddenConfirm" id="hiddenConfirm" style="display:none;" onload="if(submitted){window.location='#accueil';}"></iframe>
+
 <div class="bracket">
 
   <div class="phases">
@@ -306,7 +308,11 @@
 
     <button class="btn btnSuiv" [disabled]="!thirdVoted" (click)="navClicked(true)" *ngIf="currentPhase == 3">Suivant</button>
 
-    <button class="btn btnTerminer" [disabled]="finishActive" *ngIf="currentPhase == 4" (click)="validateBracket()">Valider</button>
+    <form action="{{builtUrl}}" method="post" target="hiddenConfirm" onsubmit="submitted=true" *ngIf="currentPhase == 4">
+      <button class="btn btnTerminer" type="submit" [disabled]="!finalVoted" (click)="validateBracket()">Valider</button>
+    </form>
   </div>
 
 </div>
+
+<app-preloader *ngIf="showLoader"></app-preloader>

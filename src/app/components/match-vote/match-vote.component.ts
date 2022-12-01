@@ -176,8 +176,8 @@ export class MatchVoteComponent implements OnInit {
 
           setTimeout(() => {
             this.closeGame();
-          }, 1000);
-        }, 800);
+          }, 2200);
+        }, 1800);
       })
       .catch((error)=> {
         //  console.log('error', error);
@@ -186,8 +186,8 @@ export class MatchVoteComponent implements OnInit {
 
           setTimeout(() => {
             this.closeGame();
-          }, 1000);
-        }, 800);
+          }, 2200);
+        }, 1800);
       });
   }
 
