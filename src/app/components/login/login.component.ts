@@ -64,7 +64,11 @@ export class LoginComponent implements OnInit {
 
     this.loginService.getLogin(login).subscribe((res)=>{
       this.dataLogin = res;
-      this.checkPass(pass, this.dataLogin.data[0]);
+      if( this.dataLogin.length !== undefined) {
+        this.checkPass(pass, this.dataLogin.data[0]);
+      } else {
+        console.log('Login could not be processed due to api error..')
+      }
     })
 
     // this.dataLogin.data.every((element: { username: string;}) =>{
