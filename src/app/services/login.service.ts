@@ -19,15 +19,6 @@ export class LoginService {
     })
   };
 
-  // fetch(URL, {
-  //   redirect: "follow",
-  //   method: "POST",
-  //   body: JSON.stringify(DATA),
-  //   headers: {
-  //     "Content-Type": "text/plain;charset=utf-8",
-  //   },
-  // })
-
 
   retrieveLogins(){
     return this.http.get('https://script.google.com/macros/s/AKfycbwiKXYiOVAZsNnJF8W6T5RYhmsxpl5SXI5ktOafV4jft4-FvMB2X5BUNtij8uTlZG7X/exec');
