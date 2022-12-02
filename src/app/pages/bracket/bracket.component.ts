@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-bracket',
@@ -7,9 +8,14 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class BracketComponent implements OnInit {
 
-  constructor() { }
+  constructor( private cookieService: CookieService) { }
 
   public builtUrl: string = '';
+  public bracketOpen: boolean = false;
+  public showLogin: boolean = false;
+  public isLoggedIn: boolean = false;
+  public bracketPlayed: boolean = false;
+
   private voteUrl: string = 'https://docs.google.com/forms/d/e/1FAIpQLSfY2K-NaaArfawI7ZniUqQgy8KWU8ySFL4lk_gjZY4hRbZOkA';
   public trigramme: string = '';
   public prevActive: boolean = false;
@@ -73,7 +79,7 @@ export class BracketComponent implements OnInit {
   @Input() matchesData: any = [];
 
   ngOnInit(): void {
-    this.trigramme = 'iml-testing';
+    this.checkLoggin();
 
     let itemCount = 0;
     let itemLength = this.matchesData.data.length;
@@ -88,6 +94,27 @@ export class BracketComponent implements OnInit {
         this.doneR16Data();
       };
     })
+  }
+
+  checkLoggin() {
+    if(this.cookieService.get('user') !== ""){
+      this.isLoggedIn = true;
+      this.trigramme = this.cookieService.get('user');
+      this.hasPlayed();
+    } else {
+      this.isLoggedIn = false;
+      this.bracketOpen = false;
+    }
+  }
+
+  hasPlayed(){
+    if(window.localStorage.getItem('bracketPlayed') !== 'played'){
+      this.bracketPlayed = false;
+      this.bracketOpen = true;
+    } else {
+      this.bracketPlayed = true;
+      this.bracketOpen = false;
+    }
   }
 
   doneR16Data(){
@@ -287,7 +314,12 @@ export class BracketComponent implements OnInit {
 
   validateBracket(){
     // console.log('validate bracket');
+    window.localStorage.setItem('bracketPlayed', 'played');
     this.showLoader = true;
+
+    setTimeout(() => {
+      window.location.reload();
+    }, 300);
   }
 
 

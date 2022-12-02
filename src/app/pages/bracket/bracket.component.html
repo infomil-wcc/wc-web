@@ -1,8 +1,14 @@
 <iframe name="hiddenConfirm" id="hiddenConfirm" style="display:none;" onload="if(submitted){window.location='#accueil';}"></iframe>
 
 <h2>Ca commence bientot !</h2>
-<div class="bracket">
 
+
+
+<div class="bracket" [ngClass]="{'dis' : !bracketOpen}">
+  <div class="msg" >
+    <p *ngIf="!isLoggedIn">Vous devez être connecté pour jouer.</p>
+    <p *ngIf="hasPlayed">Vous avez déjà participer, merci.</p>
+  </div>
   <div class="phases">
     <!--- Phase R16 starts here-->
     <div class="phase phaseR16" [ngClass]="{'active' : currentPhase == 0}">
