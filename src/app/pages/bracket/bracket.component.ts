@@ -102,6 +102,7 @@ export class BracketComponent implements OnInit {
       this.trigramme = this.cookieService.get('user');
       this.hasPlayed();
     } else {
+      this.bracketPlayed = false;
       this.isLoggedIn = false;
       this.bracketOpen = false;
     }

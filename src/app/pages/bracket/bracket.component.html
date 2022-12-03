@@ -7,7 +7,7 @@
 <div class="bracket" [ngClass]="{'dis' : !bracketOpen}">
   <div class="msg" >
     <p *ngIf="!isLoggedIn">Vous devez être connecté pour jouer.</p>
-    <p *ngIf="hasPlayed">Vous avez déjà participer, merci.</p>
+    <p *ngIf="isLoggedIn && bracketPlayed">Vous avez déjà participer, merci.</p>
   </div>
   <div class="phases">
     <!--- Phase R16 starts here-->
