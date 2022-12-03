@@ -64,12 +64,12 @@ export class LoginComponent implements OnInit {
 
     this.loginService.getLogin(login).subscribe((res)=>{
       this.dataLogin = res;
-      console.log('login Res ->', this.dataLogin);
+      // console.log('login Res ->', this.dataLogin);
 
       if(this.dataLogin.data.length !== undefined) {
         this.checkPass(pass, this.dataLogin.data[0]);
       } else {
-        console.log('Login could not be processed due to api error..');
+        // console.log('Login could not be processed due to api error..');
       }
     })
 

@@ -58,7 +58,7 @@ export class ResultatsMatchsComponent implements OnInit {
         this.userData = res.data[0];
         this.cookie.setCookie('userData',JSON.stringify(this.userData));
         this.getMatchData('');
-        console.log(this.userData);
+        // console.log(this.userData);
       });
     } else {
       this.getMatchData('all');

@@ -17,7 +17,7 @@ export class TopHeaderComponent implements OnInit {
   public connected: boolean = false;
 
   ngOnInit(): void {
-    console.log(this.cookieService.get('user'));
+    // console.log(this.cookieService.get('user'));
     if(this.cookieService.get('user') !== ''){
       this.connected = true;
     } else {
