@@ -112,6 +112,7 @@ export class ResultatsMatchsComponent implements OnInit {
 
       if(count == dataLength){
         this.loaded = true;
+        this.filter('available');
         // console.log(this.match);
       }
 
