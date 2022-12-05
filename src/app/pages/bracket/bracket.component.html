@@ -24,7 +24,7 @@
               <label>
                 <input type="radio" value="{{ matches.team_a }}" name="match-{{matches.id}}"
                   (input)="selectedR16($event, matches.team_a, matches.id)" />
-                <img src="https://infomil-wcc.github.io/faq/flags/{{matches.team_a | lowercase }}.png" alt="" />
+                <img src="https://infomil-wcc.github.io/faq/flags/{{getImg(matches.team_a)}}" alt="" />
                 <span class="selected material-symbols-outlined"> done </span>
                 <div class="txt">{{ matches.team_a }}</div>
               </label>
@@ -36,7 +36,7 @@
               <label>
                 <input type="radio" value="{{ matches.team_b }}" name="match-{{matches.id}}"
                   (input)="selectedR16($event, matches.team_b,  matches.id)" />
-                <img src="https://infomil-wcc.github.io/faq/flags/{{matches.team_b | lowercase }}.png" alt="" />
+                <img src="https://infomil-wcc.github.io/faq/flags/{{getImg(matches.team_b)}}" alt="" />
                 <span class="selected material-symbols-outlined"> done </span>
                 <div class="txt">{{ matches.team_b }}</div>
               </label>
@@ -61,7 +61,7 @@
             <label>
               <input type="radio" value="{{ quart1A }}" name="match-57"
                 (input)="selectedQuarter($event, quart1A , 57)" />
-              <img src="https://infomil-wcc.github.io/faq/flags/{{ quart1A | lowercase }}.png" alt="" />
+              <img src="https://infomil-wcc.github.io/faq/flags/{{getImg(quart1A)}}" alt="" />
               <span class="selected material-symbols-outlined"> done </span>
               <div class="txt">{{ quart1A }}</div>
             </label>
@@ -73,7 +73,7 @@
             <label>
               <input type="radio" value="{{ quart1B }}" name="match-57"
                 (input)="selectedQuarter($event, quart1B, 57)" />
-              <img src="https://infomil-wcc.github.io/faq/flags/{{ quart1B | lowercase }}.png" alt="" />
+              <img src="https://infomil-wcc.github.io/faq/flags/{{getImg(quart1B)}}" alt="" />
               <span class="selected material-symbols-outlined"> done </span>
               <div class="txt">{{ quart1B }}</div>
             </label>
@@ -88,7 +88,7 @@
             <label>
               <input type="radio" value="{{ quart2A }}" name="match-58"
                 (input)="selectedQuarter($event, quart2A , 58)" />
-              <img src="https://infomil-wcc.github.io/faq/flags/{{ quart2A | lowercase }}.png" alt="" />
+              <img src="https://infomil-wcc.github.io/faq/flags/{{getImg(quart2A)}}" alt="" />
               <span class="selected material-symbols-outlined"> done </span>
               <div class="txt">{{ quart2A }}</div>
             </label>
@@ -100,7 +100,7 @@
             <label>
               <input type="radio" value="{{ quart2B }}" name="match-58"
                 (input)="selectedQuarter($event, quart2B, 58)" />
-              <img src="https://infomil-wcc.github.io/faq/flags/{{ quart2B | lowercase }}.png" alt="" />
+              <img src="https://infomil-wcc.github.io/faq/flags/{{getImg(quart2B)}}" alt="" />
               <span class="selected material-symbols-outlined"> done </span>
               <div class="txt">{{ quart2B }}</div>
             </label>
@@ -117,7 +117,7 @@
             <label>
               <input type="radio" value="{{ quart3A }}" name="match-59"
                 (input)="selectedQuarter($event, quart3A , 59)" />
-              <img src="https://infomil-wcc.github.io/faq/flags/{{ quart3A | lowercase }}.png" alt="" />
+              <img src="https://infomil-wcc.github.io/faq/flags/{{getImg(quart3A)}}" alt="" />
               <span class="selected material-symbols-outlined"> done </span>
               <div class="txt">{{ quart3A }}</div>
             </label>
@@ -129,7 +129,7 @@
             <label>
               <input type="radio" value="{{ quart3B }}" name="match-59"
                 (input)="selectedQuarter($event, quart3B, 59)" />
-              <img src="https://infomil-wcc.github.io/faq/flags/{{ quart3B | lowercase }}.png" alt="" />
+              <img src="https://infomil-wcc.github.io/faq/flags/{{getImg(quart3B)}}" alt="" />
               <span class="selected material-symbols-outlined"> done </span>
               <div class="txt">{{ quart3B }}</div>
             </label>
@@ -144,7 +144,7 @@
             <label>
               <input type="radio" value="{{ quart4A }}" name="match-60"
                 (input)="selectedQuarter($event, quart4A , 60)" />
-              <img src="https://infomil-wcc.github.io/faq/flags/{{ quart4A | lowercase }}.png" alt="" />
+              <img src="https://infomil-wcc.github.io/faq/flags/{{getImg(quart4A)}}" alt="" />
               <span class="selected material-symbols-outlined"> done </span>
               <div class="txt">{{ quart4A }}</div>
             </label>
@@ -156,7 +156,7 @@
             <label>
               <input type="radio" value="{{ quart4B }}" name="match-60"
                 (input)="selectedQuarter($event, quart4B, 60)" />
-              <img src="https://infomil-wcc.github.io/faq/flags/{{ quart4B | lowercase }}.png" alt="" />
+              <img src="https://infomil-wcc.github.io/faq/flags/{{getImg(quart4B)}}" alt="" />
               <span class="selected material-symbols-outlined"> done </span>
               <div class="txt">{{ quart4B }}</div>
             </label>
@@ -178,7 +178,7 @@
             <label>
               <input type="radio" value="{{ semi1A }}" name="match-61"
                 (input)="selectedSemi($event, semi1A, semi1B, 61)" />
-              <img src="https://infomil-wcc.github.io/faq/flags/{{ semi1A | lowercase }}.png" alt="" />
+              <img src="https://infomil-wcc.github.io/faq/flags/{{getImg(semi1A)}}" alt="" />
               <span class="selected material-symbols-outlined"> done </span>
               <div class="txt">{{ semi1A }}</div>
             </label>
@@ -190,7 +190,7 @@
             <label>
               <input type="radio" value="{{ semi1B }}" name="match-61"
                 (input)="selectedSemi($event, semi1B, semi1A, 61)" />
-              <img src="https://infomil-wcc.github.io/faq/flags/{{ semi1B | lowercase }}.png" alt="" />
+              <img src="https://infomil-wcc.github.io/faq/flags/{{getImg(semi1B)}}" alt="" />
               <span class="selected material-symbols-outlined"> done </span>
               <div class="txt">{{ semi1B }}</div>
             </label>
@@ -205,7 +205,7 @@
             <label>
               <input type="radio" value="{{ semi2A }}" name="match-62"
                 (input)="selectedSemi($event, semi2A, semi2B, 62)" />
-              <img src="https://infomil-wcc.github.io/faq/flags/{{ semi2A | lowercase }}.png" alt="" />
+              <img src="https://infomil-wcc.github.io/faq/flags/{{getImg(semi2A)}}" alt="" />
               <span class="selected material-symbols-outlined"> done </span>
               <div class="txt">{{ semi2A }}</div>
             </label>
@@ -217,7 +217,7 @@
             <label>
               <input type="radio" value="{{ semi2B }}" name="match-62"
                 (input)="selectedSemi($event, semi2B, semi2A, 62)" />
-              <img src="https://infomil-wcc.github.io/faq/flags/{{ semi2B | lowercase }}.png" alt="" />
+              <img src="https://infomil-wcc.github.io/faq/flags/{{getImg(semi2B)}}" alt="" />
               <span class="selected material-symbols-outlined"> done </span>
               <div class="txt">{{ semi2B }}</div>
             </label>
@@ -242,7 +242,7 @@
             <label>
               <input type="radio" value="{{ third1A }}" name="match-63"
                 (input)="selectedThird($event, third1A)" />
-              <img src="https://infomil-wcc.github.io/faq/flags/{{ third1A | lowercase }}.png" alt="" />
+              <img src="https://infomil-wcc.github.io/faq/flags/{{getImg(third1A)}}" alt="" />
               <span class="selected material-symbols-outlined"> done </span>
               <div class="txt">{{ third1A }}</div>
             </label>
@@ -254,7 +254,7 @@
             <label>
               <input type="radio" value="{{ third1B }}" name="match-63"
                 (input)="selectedThird($event, third1B)" />
-              <img src="https://infomil-wcc.github.io/faq/flags/{{ third1B | lowercase }}.png" alt="" />
+              <img src="https://infomil-wcc.github.io/faq/flags/{{getImg(third1B)}}" alt="" />
               <span class="selected material-symbols-outlined"> done </span>
               <div class="txt">{{ third1B }}</div>
             </label>
@@ -276,7 +276,7 @@
             <label>
               <input type="radio" value="{{ final1A }}" name="match-64"
                 (input)="selectedFinal($event, final1A)" />
-              <img src="https://infomil-wcc.github.io/faq/flags/{{ final1A | lowercase }}.png" alt="" />
+              <img src="https://infomil-wcc.github.io/faq/flags/{{getImg(final1A)}}" alt="" />
               <span class="selected material-symbols-outlined"> done </span>
               <div class="txt">{{ final1A }}</div>
             </label>
@@ -288,7 +288,7 @@
             <label>
               <input type="radio" value="{{ final1B }}" name="match-64"
                 (input)="selectedFinal($event, final1B)" />
-              <img src="https://infomil-wcc.github.io/faq/flags/{{ final1B | lowercase }}.png" alt="" />
+              <img src="https://infomil-wcc.github.io/faq/flags/{{getImg(final1B)}}" alt="" />
               <span class="selected material-symbols-outlined"> done </span>
               <div class="txt">{{ final1B }}</div>
             </label>

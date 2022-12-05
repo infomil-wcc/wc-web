@@ -362,6 +362,10 @@ export class BracketComponent implements OnInit {
     }
   }
 
+  getImg(str: string): string{
+    return str.replace(/[ ,]+/g, "-").toLowerCase() + '.png';
+  }
+
 
   //Prefilled Link:
   // https://docs.google.com/forms/d/e/1FAIpQLSfY2K-NaaArfawI7ZniUqQgy8KWU8ySFL4lk_gjZY4hRbZOkA/viewform?usp=pp_url&entry.914592914=iml-ol&entry.1067275155=france&entry.1735911568=bresil&entry.1281783025=england&entry.1857586688=portugal&entry.1827861790=croatia&entry.1084438595=cameroun&entry.1726322809=serbia&entry.1763025529=korea&entry.201792987=costa+rica&entry.1926275789=germany&entry.1288419142=suisse&entry.1521289153=spain&entry.417482763=bresil&entry.781005520=france&entry.1952741567=portugal&entry.910046863=bresil
