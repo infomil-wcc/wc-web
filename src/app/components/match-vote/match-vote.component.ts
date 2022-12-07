@@ -34,6 +34,9 @@ export class MatchVoteComponent implements OnInit {
   submitted!: boolean;
   passOk: boolean = false;
   voteId: string = '';
+  squadList: any = [];
+  squadSelected: string = '';
+  selectedPlayer: string = '';
 
   @ViewChild('halfTimeA') halfTimeA!: ElementRef;
   @ViewChild('halfTimeB') halfTimeB!: ElementRef;
@@ -41,6 +44,7 @@ export class MatchVoteComponent implements OnInit {
   @ViewChild('fullTimeB') fullTimeB!: ElementRef;
   @ViewChild('scorerName') scorerName!: ElementRef;
   @ViewChild('pass') pass!: ElementRef;
+  @ViewChild('selectPlayer') selectPlayer!: ElementRef;
 
 
 
@@ -51,6 +55,7 @@ export class MatchVoteComponent implements OnInit {
     this.teamAFlag = `https://infomil-wcc.github.io/faq/flags/${this.getImg(this.element.team_a)}`;
     this.teamBFlag = `https://infomil-wcc.github.io/faq/flags/${this.getImg(this.element.team_b)}`;
     this.voteUrl = `${this.element.formId}/formResponse?usp=pp_url&`;
+    this.getSquad();
     // console.log('showing game ->', this.element);
   }
 
@@ -102,19 +107,19 @@ export class MatchVoteComponent implements OnInit {
 
     switch (this.element.group) {
       case 'WCF':
-        this.builtUrl = this.buildURL('WCF', {'trigramme': this.trigramme, 'winDraw': this.winDrawSelection, 'halfTimeA': this.halfTimeA.nativeElement.value, 'halfTimeB': this.halfTimeB.nativeElement.value, 'fullTimeA': this.fullTimeA.nativeElement.value, 'fullTimeB': this.fullTimeB.nativeElement.value, 'firstScoring': this.firstScoring, 'scorer': this.scorerName.nativeElement.value});
+        this.builtUrl = this.buildURL('WCF', {'trigramme': this.trigramme, 'winDraw': this.winDrawSelection, 'halfTimeA': this.halfTimeA.nativeElement.value, 'halfTimeB': this.halfTimeB.nativeElement.value, 'fullTimeA': this.fullTimeA.nativeElement.value, 'fullTimeB': this.fullTimeB.nativeElement.value, 'firstScoring': this.firstScoring, 'scorer': this.selectPlayer.nativeElement.value});
         fullScoreA = this.fullTimeA.nativeElement.value;
         fullScoreB = this.fullTimeB.nativeElement.value;
-        scorer = this.scorerName.nativeElement.value;
+        scorer = this.selectPlayer.nativeElement.value;
         scoringFirst = this.firstScoring;
         break;
 
       case 'SF':
       case 'QF':
-        this.builtUrl = this.buildURL('SF', {'trigramme': this.trigramme, 'winDraw': this.winDrawSelection, 'fullTimeA': this.fullTimeA.nativeElement.value, 'fullTimeB': this.fullTimeB.nativeElement.value, 'scorer': this.scorerName.nativeElement.value});
+        this.builtUrl = this.buildURL('SF', {'trigramme': this.trigramme, 'winDraw': this.winDrawSelection, 'fullTimeA': this.fullTimeA.nativeElement.value, 'fullTimeB': this.fullTimeB.nativeElement.value, 'scorer': this.selectPlayer.nativeElement.value});
         fullScoreA = this.fullTimeA.nativeElement.value;
         fullScoreB = this.fullTimeB.nativeElement.value;
-        scorer = this.scorerName.nativeElement.value;
+        scorer = this.selectPlayer.nativeElement.value;
       break
 
       case 'R16':
@@ -163,6 +168,8 @@ export class MatchVoteComponent implements OnInit {
       headers: myHeaders,
       redirect: 'follow'
     } as any;
+
+    // console.log(this.builtUrl);
 
     // scoreA, scoreB
     fetch(`https://script.google.com/macros/s/AKfycbzun78aOgIdSxr9yIFcq4rLubFO9dxofikEpaCJKwRkLmdvluuaFyhCziLe9Yi0Fvcd/exec?user=${trigramme}&matchId=${gameId}&vote=${this.voteId}${additionalParams}`, requestOptions)
@@ -228,4 +235,18 @@ export class MatchVoteComponent implements OnInit {
       this.passOk = false;
     }
   }
+
+  getSquad(){
+    if(this.element.groupType !== 'R16'){
+      this.matchService.getSquad(this.element.gameId).subscribe((res: any)=>{
+        this.squadList = res.data;
+        this.squadCountrySelected(this.element.team_a);
+      })
+    }
+  }
+
+  squadCountrySelected(e: any){
+    this.squadSelected = e;
+  }
+
 }

@@ -166,6 +166,20 @@ div.input {
     }
   }
 
+  select {
+    width: 45%;
+    background: transparent;
+    padding: 1rem;
+    color: white;
+    margin: 0 10px;
+    border-radius: 5px;
+    border: 1px solid #1d868d;
+
+    option {
+      background: #222222;
+    }
+  }
+
   .togglePass, .copy {
     position: absolute;
     right: 15px;
@@ -433,4 +447,8 @@ input[type=number]::-webkit-outer-spin-button {
 .topDiv {
   max-width: 860px;
   margin: 0 auto;
+}
+
+.hidden {
+  display: none;
 }

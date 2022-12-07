@@ -1,4 +1,4 @@
-<!-- <app-preloader *ngIf="!loaded"></app-preloader> -->
+
 <div class="preloader" *ngIf="!loaded">
   <div class="main-fader" responsive-height-comments>
     <div class="loader">
@@ -35,15 +35,12 @@
   </div>
 </div>
 
-
-
 <div class="flex justify-right topDiv align-end">
 
   <div class="matchesFilter flex align-center">
     Filtrer les matchs :
     <button class="btn btnFilter" [ngClass]="{'active': filterAll} " (click)="filter('all')">Tous les matchs</button>
     <button class="btn btnFilter" [ngClass]="{'active': filterAvailable }" (click)="filter('available')">Aujourdhui et plus</button>
-    <!-- <button class="btn btnFilter" [ngClass]="{'active': filterFuture }" (click)="filter('future')">Matchs a venir</button> -->
   </div>
 
 

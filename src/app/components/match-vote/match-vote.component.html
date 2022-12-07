@@ -319,8 +319,17 @@
       </div>
 
       <div class="scorer">
-        <div class="input scorer">
-          <input type="text" #scorerName />
+        <div class="input scorer flex justify-between">
+          <select value="" (input)="squadCountrySelected(teamSquadselect.value)" #teamSquadselect>
+            <option>{{ this.element.team_a}}</option>
+            <option>{{ this.element.team_b}}</option>
+          </select>
+
+          <select #selectPlayer>
+            <ng-container *ngFor="let item of squadList[squadSelected]">
+              <option>{{ item }}</option>
+            </ng-container>
+          </select>
         </div>
       </div>
     </div>
