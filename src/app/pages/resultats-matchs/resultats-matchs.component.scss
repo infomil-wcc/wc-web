@@ -58,6 +58,7 @@
       .matches__game {
         background: linear-gradient(90deg, darken(white, 10%) 30%, lighten($goldColor,30%) 100%);
         color: darken($secondaryColor, 50%);
+
       }
     }
 
@@ -78,6 +79,7 @@
     font-size: 14px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(darken($primaryColor,10%),0.8);
+    position: relative;
 
     .icone {
       font-size: 1.25rem;
@@ -92,12 +94,51 @@
 
   .voteFait {
     font-size: 12px;
+    padding-left: 14px;
+
+
+    .voteTxt {
+      background: darken($primaryColor, 5%);
+      color: white;
+      padding: 5px;
+      position: absolute;
+      top: 0;
+      height: 100%;
+      font-size: 10px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      margin-left: -18px;
+    }
 
     .voted {
       font-weight: 700;
-      font-size: 14px;
+      font-size: 12px;
       color: $primaryColor;
       text-transform: uppercase;
+      margin-bottom: 0.15rem;
+
+      .wins {
+        font-size: 8px;
+        padding: 2px 4px;
+        border-radius: 5px;
+        background: $goldColor;
+        color: white;
+        margin-left: 4px;
+      }
+
+      &.scorerVote {
+        color: $primaryColor;
+        font-weight: bold;
+        font-size: 10px;
+        align-items: center;
+
+        .icone {
+          font-size: 11px;
+          margin: 0 2px 0 0;
+          color :black;
+        }
+      }
     }
   }
 }

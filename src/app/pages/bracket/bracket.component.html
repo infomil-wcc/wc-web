@@ -4,10 +4,12 @@
 
 
 
-<div class="bracket" [ngClass]="{'dis' : !bracketOpen}">
+<!-- <div class="bracket dis" [ngClass]="{'dis' : !bracketOpen}"> -->
+  <div class="bracket dis">
   <div class="msg" >
-    <p *ngIf="!isLoggedIn">Vous devez être connecté pour jouer.</p>
-    <p *ngIf="isLoggedIn && bracketPlayed">Vous avez déjà participer, merci.</p>
+    <!-- <p *ngIf="!isLoggedIn">Vous devez être connecté pour jouer.</p>
+    <p *ngIf="isLoggedIn && bracketPlayed">Vous avez déjà participer, merci.</p> -->
+    <p >Le jeu du bracket est fermé, merci.</p>
   </div>
   <div class="phases">
     <!--- Phase R16 starts here-->

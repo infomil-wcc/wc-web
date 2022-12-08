@@ -123,13 +123,19 @@
             </button> -->
 
             <div class="voteFait" *ngIf="item.userPlayed !== ''">
-              <ng-container>Votre vote : <br />
-                <div class="voted">
-                  <ng-container *ngIf="item.userPlayed == 'A'">{{this.item.team_a}} Win</ng-container>
-                  <ng-container *ngIf="item.userPlayed == 'B'">{{this.item.team_b}} Win</ng-container>
-                  <ng-container *ngIf="item.userPlayed == 'D'">Match Nul</ng-container>
+              <ng-container>
+                <div class="voteTxt">
+                  V<br />O <br /> T <br /> E
                 </div>
-                <div class="voted">{{ item.myScore }}</div>
+                <div class="voted flex align-center justify-center">
+                  <ng-container *ngIf="item.userPlayed == 'A'">{{this.item.team_a}} <span class="wins">Win</span></ng-container>
+                  <ng-container *ngIf="item.userPlayed == 'B'">{{this.item.team_b}} <span class="wins">Win</span></ng-container>
+                  <ng-container *ngIf="item.userPlayed == 'D'">Match Nul <span class="wins">Draw</span></ng-container>
+                </div>
+                <div class="voted" *ngIf="item.group == 'QF' || item.group =='SF' || item.group == 'WCF'"> FT : {{ item.myScore }}</div>
+                <div class="voted scorerVote flex justify-center" *ngIf="item.group == 'QF' || item.group =='SF' || item.group == 'WCF'"><span class="material-symbols-outlined icone">
+                  sports_soccer
+                  </span> {{ item.myScorer }}</div>
               </ng-container>
             </div>
 
