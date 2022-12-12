@@ -104,16 +104,16 @@
 
           <div class="vote">
 
-            <button class="btnVote disabled" *ngIf="item.group == 'SF' && item.voteEstOuvert" (click)="showPopinTriche = true">
+            <!-- <button class="btnVote disabled" *ngIf="item.group == 'SF' && item.voteEstOuvert" (click)="showPopinTriche = true">
               <ng-container>Vote non-ouvert</ng-container>
-            </button>
+            </button> -->
 
-            <!-- <button class="btnVote" *ngIf="item.activeToVote === 1 && item.userPlayed === '' && item.voteEstOuvert" (click)="playGame(item)">
+            <button class="btnVote" *ngIf="item.activeToVote === 1 && item.userPlayed === '' && item.voteEstOuvert" (click)="playGame(item)">
               <ng-container>Pronostiquer</ng-container>
               <span class="material-symbols-outlined icn">
                 arrow_forward_ios
                 </span>
-            </button> -->
+            </button>
 
             <!-- Debugger button -->
             <!-- <button class="btnVote" (click)="playGame(item)">
@@ -137,7 +137,7 @@
                   <ng-container *ngIf="item.userPlayed == 'B'">{{this.item.team_b}} <span class="wins">Win</span></ng-container>
                   <ng-container *ngIf="item.userPlayed == 'D'">Match Nul <span class="wins">Draw</span></ng-container>
                 </div>
-                <div class="voted" *ngIf="item.group == 'QF' || item.group =='SF' || item.group == 'WCF'"> FT : {{ item.myScore }}</div>
+                <div class="voted" *ngIf="item.group == 'R16' || item.group == 'QF' || item.group =='SF' || item.group == 'WCF'"> FT : {{ item.myScore }}</div>
                 <div class="voted scorerVote flex justify-center" *ngIf="item.group == 'QF' || item.group =='SF' || item.group == 'WCF'"><span class="material-symbols-outlined icone">
                   sports_soccer
                   </span> {{ item.myScorer }}</div>
