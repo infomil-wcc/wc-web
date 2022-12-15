@@ -68,7 +68,7 @@ export class MatchVoteComponent implements OnInit {
   }
 
   showSelect(elem: string){
-    if(elem == 'SF' || elem == 'QF' || elem == 'R16' || elem == 'WCF') {
+    if(elem == 'TP' || elem == 'SF' || elem == 'QF' || elem == 'R16' || elem == 'WCF') {
       return false
     } else {
       return true

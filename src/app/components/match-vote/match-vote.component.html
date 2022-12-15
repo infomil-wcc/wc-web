@@ -269,7 +269,7 @@
       </div>
     </div>
 
-    <div class="matchVote__section fullTime flex justify-between wrap" *ngIf="this.element.group == 'R16' || this.element.group == 'QF' || this.element.group == 'SF' || this.element.group == 'WCF'">
+    <div class="matchVote__section fullTime flex justify-between wrap" *ngIf="this.element.group == 'R16' || this.element.group == 'QF' || this.element.group == 'SF' || this.element.group == 'WCF' || this.element.group == 'TP'">
       <div class="sectionTitle">
         Quel sera le score au coup de sifflet final ?
       </div>
@@ -296,7 +296,7 @@
       </div>
     </div>
 
-    <div class="matchVote__section firstGoal flex justify-between wrap" *ngIf="this.element.group == 'WCF'">
+    <!-- <div class="matchVote__section firstGoal flex justify-between wrap" *ngIf="this.element.group == 'WCF'">
       <div class="sectionTitle">
         Qui va inscrire le premier but pour cette rencontre ?
       </div>
@@ -311,9 +311,9 @@
       </div>
 
 
-    </div>
+    </div> -->
 
-    <div class="matchVote__section scorer flex justify-between wrap" *ngIf="this.element.group == 'WCF'|| this.element.group == 'QF' || this.element.group == 'SF'">
+    <div class="matchVote__section scorer flex justify-between wrap" *ngIf="this.element.group == 'WCF'|| this.element.group == 'QF' || this.element.group == 'SF'|| this.element.group == 'TP'">
       <div class="sectionTitle">
         Le nom d'un buteur pour cette rencontre ?
       </div>
