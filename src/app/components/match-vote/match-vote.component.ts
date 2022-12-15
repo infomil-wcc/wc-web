@@ -110,10 +110,12 @@ export class MatchVoteComponent implements OnInit {
         this.builtUrl = this.buildURL('WCF', {'trigramme': this.trigramme, 'winDraw': this.winDrawSelection, 'halfTimeA': this.halfTimeA.nativeElement.value, 'halfTimeB': this.halfTimeB.nativeElement.value, 'fullTimeA': this.fullTimeA.nativeElement.value, 'fullTimeB': this.fullTimeB.nativeElement.value, 'firstScoring': this.firstScoring, 'scorer': this.selectPlayer.nativeElement.value});
         fullScoreA = this.fullTimeA.nativeElement.value;
         fullScoreB = this.fullTimeB.nativeElement.value;
+        halfScoreA = this.halfTimeA.nativeElement.value;
+        haflScoreB = this.halfTimeB.nativeElement.value;
         scorer = this.selectPlayer.nativeElement.value;
-        scoringFirst = this.firstScoring;
         break;
 
+      case 'TP':
       case 'SF':
       case 'QF':
         this.builtUrl = this.buildURL('SF', {'trigramme': this.trigramme, 'winDraw': this.winDrawSelection, 'fullTimeA': this.fullTimeA.nativeElement.value, 'fullTimeB': this.fullTimeB.nativeElement.value, 'scorer': this.selectPlayer.nativeElement.value});
@@ -138,7 +140,7 @@ export class MatchVoteComponent implements OnInit {
   }
 
   updateViaFetch(gameId: any, trigramme:any, groupType: any, fullscoreA: any, fullScoreB: any, halfScoreA: any, haflScoreB: any, scorer: string, scoringFirst: any){
-
+    debugger;
     var myHeaders = new Headers();
     myHeaders.append("Cookie", "NID=511=Nc0Y8lxUOEJeaBaWHAL0xo-voSQ70jY4d-6XV3V41eHiD_qE287CeQd-yRqo5_L-Z5ATjr90knjuOsadRZFGd5XRXouvm2DV7lsWFaY3sPhcsXfC4LYj7ainarTXz924baq-zwtKxL4oP8PT9XP6IBIcUdCOyVTtAesFdob1NVM");
 
@@ -149,6 +151,7 @@ export class MatchVoteComponent implements OnInit {
         additionalParams = `&scoreA=${fullscoreA}&scoreB=${fullScoreB}&scorer=${scorer}&halfA=${halfScoreA}&halfB=${haflScoreB}`;
       break;
 
+      case 'TP':
       case 'SF':
       case 'QF':
         additionalParams = `&scoreA=${fullscoreA}&scoreB=${fullScoreB}&scorer=${scorer}`;

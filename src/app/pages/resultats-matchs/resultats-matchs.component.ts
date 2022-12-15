@@ -103,6 +103,7 @@ export class ResultatsMatchsComponent implements OnInit {
         "eTrigramme": elem.eTrigramme,
         "eWinDraw": elem.eWinDraw,
         "userPlayed": (type == 'all') ? '' : this.checkPlayedMatches(elem.id),
+        "ScoreHalfTime": (type == 'all') ? '' : this.checkScoreHalfTime(),
         "myScore": (type == 'all') ? '' : this.checkScore(elem.id),
         "myScorer": (type == 'all') ? '' : this.checkScorer(elem.id),
         "actived": elem.actived,
@@ -119,6 +120,14 @@ export class ResultatsMatchsComponent implements OnInit {
 
 
   })
+  }
+
+  checkScoreHalfTime(){
+    if(this.isLoggedIn){
+      return this.userData[`ScoreHalfTime`];
+    } else {
+      return '';
+    }
   }
 
   checkScore(matchId: any){

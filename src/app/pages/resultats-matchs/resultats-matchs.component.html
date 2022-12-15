@@ -137,8 +137,9 @@
                   <ng-container *ngIf="item.userPlayed == 'B'">{{this.item.team_b}} <span class="wins">Win</span></ng-container>
                   <ng-container *ngIf="item.userPlayed == 'D'">Match Nul <span class="wins">Draw</span></ng-container>
                 </div>
-                <div class="voted" *ngIf="item.group == 'R16' || item.group == 'QF' || item.group =='SF' || item.group == 'WCF'"> FT : {{ item.myScore }}</div>
-                <div class="voted scorerVote flex justify-center" *ngIf="item.group == 'QF' || item.group =='SF' || item.group == 'WCF'"><span class="material-symbols-outlined icone">
+                <div class="voted" *ngIf="item.group == 'WCF'"> HT : {{ item.ScoreHalfTime }}</div>
+                <div class="voted" *ngIf="item.group == 'R16' || item.group == 'QF' || item.group =='SF' || item.group == 'TP' || item.group == 'WCF'"> FT : {{ item.myScore }}</div>
+                <div class="voted scorerVote flex justify-center" *ngIf="item.group == 'QF' || item.group =='SF' || item.group == 'TP' || item.group == 'WCF'"><span class="material-symbols-outlined icone">
                   sports_soccer
                   </span> {{ item.myScorer }}</div>
               </ng-container>

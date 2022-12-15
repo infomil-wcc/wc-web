@@ -62,6 +62,12 @@
       }
     }
 
+    &:last-of-type {
+      .matches__game {
+        background:  linear-gradient(90deg, lighten($goldColor, 5%) 30%, lighten($goldColor,30%) 100%);
+      }
+    }
+
     &__header {
       font-size: 1.5rem;
     }
